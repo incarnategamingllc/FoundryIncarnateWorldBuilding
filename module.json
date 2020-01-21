@@ -1,0 +1,22 @@
+{
+	"name": "incarnateWorldBuilding",
+	"title": "Incarnate World Building",
+	"description": "Assists in world building and responding to unexpected player decisions",
+	"version": "0.1.2",
+	"author": "Philip aka ProNobis",
+    	"manifest": "https://incarnatefoundry.s3.us-east-2.amazonaws.com/*/public/modules/incarnateWorldBuilding/module.json",
+	"minimumCoreVersion": "0.4.3",
+   	"download": "https://incarnatefoundry.s3.us-east-2.amazonaws.com/*/public/modules/incarnateWorldBuilding/incaranteWorldBuilding.zip",
+	"scripts": ["./incarnateWorldBuilding.js"],
+	"styles": ["./incarnateWorldBuilding.css"],
+	"packs": [
+		{
+		  "name": "incarnateBattleMaps",
+		  "label": "Battle Maps (Incarnate)",
+		  "path": "packs/incarnateBattleMaps.db",
+		  "entity": "Scene",
+		  "module": "world",
+		  "system": "dnd5e"
+		}
+	]
+}

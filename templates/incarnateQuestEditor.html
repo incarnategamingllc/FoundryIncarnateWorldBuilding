@@ -1,0 +1,11 @@
+<form class="editable" autocomplete="off">
+    <div class="form-group-stacked">
+        <input name="name" type="text" value="{{quest.name}}" placeholder="Quest Name"/>
+    </div>
+    <div class="questProperties">
+	    <input name="difficulty" type="text" value="{{quest.difficulty}}" placeholder="Quest Difficulty"/>
+	    <input type="checkbox" class="incarnateQuestCompleted" name="completed"{{#if quest.completed}} checked{{/if}}/>
+    </div>
+    {{editor content=quest.description target="description" button=true editable=editable owner=owner questNumber=questNumber}}
+    <button type="submit" name="submit"><i class="fas fa-feather-alt"></i> Save Entry</button>
+</form>
