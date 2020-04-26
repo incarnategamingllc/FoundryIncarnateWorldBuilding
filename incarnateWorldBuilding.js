@@ -62,10 +62,10 @@ Hooks.on("renderActorSheet", (context,html,data) => {
 Hooks.on("renderActorSheet5eNPC", (context,html,data) => {
 	var htmlDom = html[0];
 	if (htmlDom === undefined) return true;
-	IncarnateReference.crossReferenceSetClick(htmlDom);
-	IncarnateReference.populateSetClick(htmlDom);
-	IncarnateReference.secretSetContext(html[0],context);
-	IncarnateReference.rollMacroSetClick(htmlDom);
+	Reference.crossReferenceSetClick(htmlDom);
+	Reference.populateSetClick(htmlDom);
+	Reference.secretSetContext(html[0],context);
+	Reference.rollMacroSetClick(htmlDom);
 	html = $(htmlDom);
 });
 */
@@ -1691,9 +1691,6 @@ class IncarnateReference{
 */
 //prepares a variable to count number of rolls from generator
 var rollCount =0;
-/**
-* GMs Bind
-*/
 function incarnateGMblind () {
 	if (ui._gmblind === undefined){
 		ui._gmblind = new GmsBlind();
@@ -3745,5 +3742,4 @@ class IncarnateWorldItems{
 		};
 	}
 }
-enrichHTML = IncarnateReference.enrichHTML;
 CONFIG.maxCanvasZoom = 10;
