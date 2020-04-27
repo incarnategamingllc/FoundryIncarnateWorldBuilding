@@ -267,45 +267,45 @@ Hooks.on("preCreateChatMessage", (chatFunction,chatMessage) =>{
         return false;
     }
 });
-Hooks.on("preUpdateDrawing", async (a,b,c) =>{
-    const drawing = a, sceneId = b, changes = c;
-    if (a === undefined) return true;
-    if (a.data === undefined) return true;
-    if (a.data.flags === undefined) return true;
-    const scene = game.scenes.get(b);
+Hooks.on("preUpdateDrawing", async (sceneIn, drawingIn, drawingDelta) =>{
+    const drawing = sceneIn, sceneId = drawingIn, changes = drawingDelta;
+    if (sceneIn === undefined) return true;
+    if (sceneIn.data === undefined) return true;
+    if (sceneIn.data.flags === undefined) return true;
+    const scene = game.scenes.get(drawingIn._id);
     const sceneWalls = JSON.parse(JSON.stringify(scene.data.walls));
     var drawings = JSON.parse(JSON.stringify(scene.data.drawings));
     var walls = JSON.parse(JSON.stringify(scene.data.walls));
     var notes = JSON.parse(JSON.stringify(scene.data.notes));
     //const drawing = drawings.find(source => source.id === a.data.id);
-    if (a.data.flags.type === "tree"){
-        if (a.data.flags.walls === undefined) return true;
-        for (var object in c){
-            drawing[object] = c[object];
+    if (sceneIn.data.flags.type === "tree"){
+        if (sceneIn.data.flags.walls === undefined) return true;
+        for (var object in drawingDelta){
+            drawing[object] = drawingDelta[object];
         }
-        const boundWalls = a.data.flags.walls;
-        if (a.data.flags.regular === true){
+        const boundWalls = sceneIn.data.flags.walls;
+        if (sceneIn.data.flags.regular === true){
             boundWalls.forEach(wall => {
                 const activeWall = sceneWalls.find(sceneWall => sceneWall.id === wall);
-                var startingX = a.data.x;
-                var startingY = a.data.y;
-                if (c.x !== undefined){
+                var startingX = sceneIn.data.x;
+                var startingY = sceneIn.data.y;
+                if (drawingDelta.x !== undefined){
                     const cLength = activeWall.c.length;
                     for (var d=0; d<cLength; d+=2){
-                        activeWall.c[d] = Math.floor(Math.floor(activeWall.c[d]) - Math.floor(a.data.x) + Math.floor(c.x));
+                        activeWall.c[d] = Math.floor(Math.floor(activeWall.c[d]) - Math.floor(sceneIn.data.x) + Math.floor(drawingDelta.x));
                     }
-                    startingX = c.x;
+                    startingX = drawingDelta.x;
                 }
-                if (c.y !== undefined){
+                if (drawingDelta.y !== undefined){
                     const cLength = activeWall.c.length;
                     for (var d=1; d<cLength; d+=2){
-                        activeWall.c[d] = Math.floor( Math.floor(activeWall.c[d]) - Math.floor(a.data.y) + Math.floor(c.y));
+                        activeWall.c[d] = Math.floor( Math.floor(activeWall.c[d]) - Math.floor(sceneIn.data.y) + Math.floor(drawingDelta.y));
                     }
-                    startingY = c.y;
+                    startingY = drawingDelta.y;
                 }
-                if (c.width !== undefined){
+                if (drawingDelta.width !== undefined){
                     const cLength = activeWall.c.length;
-                    const widthChange = Math.floor(c.width) / Math.floor(a.data.width);
+                    const widthChange = Math.floor(drawingDelta.width) / Math.floor(sceneIn.data.width);
                     console.log(widthChange);
                     for (var d=0; d<cLength; d+=2){
                         console.log(activeWall.c[d]);
@@ -313,9 +313,9 @@ Hooks.on("preUpdateDrawing", async (a,b,c) =>{
                         console.log(activeWall.c[d])
                     }
                 }
-                if (c.height !== undefined){
+                if (drawingDelta.height !== undefined){
                     const cLength = activeWall.c.length;
-                    const heightChange = Math.floor(c.height) / Math.floor(a.data.height);
+                    const heightChange = Math.floor(drawingDelta.height) / Math.floor(sceneIn.data.height);
                     console.log(heightChange);
                     for (var d=1; d<cLength; d+=2){
                         console.log(activeWall.c[d])
@@ -328,7 +328,7 @@ Hooks.on("preUpdateDrawing", async (a,b,c) =>{
         drawing.locked=false;
         scene.update({walls:sceneWalls,drawings:drawings});
         return false;
-    }else if (a.data.flags.type === "room"|| a.data.flags.type ==="hall"){
+    }else if (sceneIn.data.flags.type === "room"|| sceneIn.data.flags.type ==="hall"){
         const updateWalls = new Promise(async (resolve,reject) =>{
             await Reference.incarnateDelay(300);
             walls = JSON.parse(JSON.stringify(scene.data.walls));
