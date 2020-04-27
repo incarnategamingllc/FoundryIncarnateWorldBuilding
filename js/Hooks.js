@@ -268,89 +268,18 @@ Hooks.on("preCreateChatMessage", (chatFunction,chatMessage) =>{
     }
 });
 Hooks.on("preUpdateDrawing", async (sceneIn, drawingIn, drawingDelta) =>{
-    const drawing = sceneIn, sceneId = drawingIn, changes = drawingDelta;
-    if (sceneIn === undefined) return true;
-    if (sceneIn.data === undefined) return true;
-    if (sceneIn.data.flags === undefined) return true;
-    const scene = game.scenes.get(drawingIn._id);
+    const drawing = sceneIn;
+    if (sceneIn === undefined || sceneIn.data === undefined || sceneIn.data.flags === undefined) return true;
+    const scene = game.scenes.get(sceneIn._id);
     const sceneWalls = JSON.parse(JSON.stringify(scene.data.walls));
-    var drawings = JSON.parse(JSON.stringify(scene.data.drawings));
-    var walls = JSON.parse(JSON.stringify(scene.data.walls));
-    var notes = JSON.parse(JSON.stringify(scene.data.notes));
+    let drawings = JSON.parse(JSON.stringify(scene.data.drawings));
+    let walls = JSON.parse(JSON.stringify(scene.data.walls));
+    let notes = JSON.parse(JSON.stringify(scene.data.notes));
     //const drawing = drawings.find(source => source.id === a.data.id);
-    if (sceneIn.data.flags.type === "tree"){
-        if (sceneIn.data.flags.walls === undefined) return true;
-        for (var object in drawingDelta){
-            drawing[object] = drawingDelta[object];
-        }
-        const boundWalls = sceneIn.data.flags.walls;
-        if (sceneIn.data.flags.regular === true){
-            boundWalls.forEach(wall => {
-                const activeWall = sceneWalls.find(sceneWall => sceneWall.id === wall);
-                var startingX = sceneIn.data.x;
-                var startingY = sceneIn.data.y;
-                if (drawingDelta.x !== undefined){
-                    const cLength = activeWall.c.length;
-                    for (var d=0; d<cLength; d+=2){
-                        activeWall.c[d] = Math.floor(Math.floor(activeWall.c[d]) - Math.floor(sceneIn.data.x) + Math.floor(drawingDelta.x));
-                    }
-                    startingX = drawingDelta.x;
-                }
-                if (drawingDelta.y !== undefined){
-                    const cLength = activeWall.c.length;
-                    for (var d=1; d<cLength; d+=2){
-                        activeWall.c[d] = Math.floor( Math.floor(activeWall.c[d]) - Math.floor(sceneIn.data.y) + Math.floor(drawingDelta.y));
-                    }
-                    startingY = drawingDelta.y;
-                }
-                if (drawingDelta.width !== undefined){
-                    const cLength = activeWall.c.length;
-                    const widthChange = Math.floor(drawingDelta.width) / Math.floor(sceneIn.data.width);
-                    console.log(widthChange);
-                    for (var d=0; d<cLength; d+=2){
-                        console.log(activeWall.c[d]);
-                        activeWall.c[d] = ((activeWall.c[d] - startingX) * widthChange) + startingX;
-                        console.log(activeWall.c[d])
-                    }
-                }
-                if (drawingDelta.height !== undefined){
-                    const cLength = activeWall.c.length;
-                    const heightChange = Math.floor(drawingDelta.height) / Math.floor(sceneIn.data.height);
-                    console.log(heightChange);
-                    for (var d=1; d<cLength; d+=2){
-                        console.log(activeWall.c[d])
-                        activeWall.c[d] = ((activeWall.c[d] - startingY) * heightChange) + startingY;
-                        console.log(activeWall.c[d])
-                    }
-                }
-            });
-        }
-        drawing.locked=false;
-        scene.update({walls:sceneWalls,drawings:drawings});
-        return false;
-    }else if (sceneIn.data.flags.type === "room"|| sceneIn.data.flags.type ==="hall"){
-        const updateWalls = new Promise(async (resolve,reject) =>{
-            await Reference.incarnateDelay(300);
-            walls = JSON.parse(JSON.stringify(scene.data.walls));
-            drawings = JSON.parse(JSON.stringify(scene.data.drawings));
-            const dungeonWalls = await IncarnateGamingLLC.SceneGen.dungeonWalls(drawings);
-            walls = dungeonWalls.walls;
-            if (scene.data.flags !== undefined && scene.data.flags.dungeon !== undefined && scene.data.flags.dungeon.traceWalls === true){
-                const dungeonTraceWalls = await IncarnateGamingLLC.SceneGen.dungeonTraceWalls(walls,drawings);
-                walls = dungeonTraceWalls.walls;
-                drawings = dungeonTraceWalls.drawings;
-            }else{
-                drawings = drawings.filter(drawing => drawing.flags === undefined || drawing.flags.type === undefined || drawing.flags.type !== "wall");
-            }
-            if (scene.data.flags !== undefined && scene.data.flags.dungeon !== undefined && scene.data.flags.dungeon.roomDesc === true){
-                const dungeonRoomDesc = await IncarnateGamingLLC.SceneGen.dungeonRoomDesc(drawings,notes);
-                drawings = dungeonRoomDesc.drawings;
-                notes = dungeonRoomDesc.notes;
-            }
-            scene.update({drawings:drawings,notes:notes,walls:walls});
-        });
-        updateWalls;
-        return true;
+    if (drawingIn.flags.type === "tree"){
+        return IncarnateGamingLLC.ForestGenerator.moveTree(sceneIn, drawingDelta, sceneWalls, scene, drawing, drawings);
+    }else if (drawingIn.flags.type === "room"|| drawingIn.flags.type ==="hall"){
+        return IncarnateGamingLLC.DungeonGenerator.moveRoomHall(walls, drawings, notes, scene);
     }
 });
 Hooks.on("preCreateDrawing", async (drawingClass,sceneId,data) =>{
@@ -379,6 +308,7 @@ Hooks.on("preCreateDrawing", async (drawingClass,sceneId,data) =>{
         scene.update({walls:walls,drawings:drawings})
         return false;
     }
+    return true;
 });
 Hooks.on("renderDrawingConfig", async (app,html,data) =>{
     if (data.object.flags === undefined) data.object.flags = {};

@@ -80,7 +80,7 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
             if (pastHeader === false){
                 if (child.tagName === "H3"){
                     pastHeader = true
-                    var sanName = Reference.sanitizeName(child.textContent);
+                    var sanName = IncarnateGamingLLC.Reference.sanitizeName(child.textContent);
                     nav.innerHTML += this.newNav(sanName,child.firstChild.outerHTML).outerHTML;
                     currentTab = this.newTab(sanName);
                 }else{
@@ -89,7 +89,7 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
             }else{
                 if (child.tagName === "H3"){
                     tabs.innerHTML += currentTab.outerHTML;
-                    var sanName = Reference.sanitizeName(child.textContent);
+                    var sanName = IncarnateGamingLLC.Reference.sanitizeName(child.textContent);
                     nav.innerHTML += this.newNav(sanName,child.firstChild.outerHTML).outerHTML;
                     currentTab = this.newTab(sanName);
                 }else{

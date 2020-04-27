@@ -11,7 +11,6 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
             type: Object,
             scope: 'world',
             onChange: settings => {
-                console.log(settings);
             }
         });
         if( game.settings.get("incarnate","incSceneGenSettings") !=""){
@@ -92,8 +91,9 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
             strokeAlpha:1,
             strokeColor:"#000000",
             strokeWidth:12,
+            text:"",
             textAlpha:0.5,
-            textColor:"#FFFFFF",
+            textColor:"#000000",
             texture:"",
             type:"e",
             width:10,
@@ -101,6 +101,16 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
             y:100,
             z:0
         }
+    }
+    static defaultWall(){
+        return {
+            door:0,
+            flags:{},
+            c:[],
+            move:1,
+            sense:1,
+            ds:0
+        };
     }
     static moveNote (drawing,notes){
         const note = notes.find(thisNote => thisNote.id === drawing.flags.note);
@@ -135,8 +145,8 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
         y = height > 0 ? y : y + height;
         width = Math.abs(width);
         height = Math.abs(height);
-        colisionType = colisionType || {door:1,flags:{},move:1,sense:1};
-        normalType = normalType || {door:0,flags:{},move:1,sense:1};
+        colisionType = colisionType || {door:1,flags:{},move:1,sense:1,ds:0};
+        normalType = normalType || IncarnateGamingLLC.SceneGen.defaultWall();
         var walls=[];
         var wallId = startId + 1;
         var tempWall = [x,y,x+width,y];
@@ -162,8 +172,8 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
         y = height > 0 ? y : y + height;
         width = Math.abs(width);
         height = Math.abs(height);
-        colisionType = colisionType || {door:1,flags:{},move:1,sense:1};
-        normalType = normalType || {door:0,flags:{},move:1,sense:1};
+        colisionType = colisionType || {door:1,flags:{},move:1,sense:1, ds:0};
+        normalType = normalType || IncarnateGamingLLC.SceneGen.defaultWall();
         var walls=[];
         var wallId = startId + 1;
         var tempWall = [x,y,x+width,y];
@@ -228,8 +238,8 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
         return {walls:walls,id:wallId};
     }
     static wallColisionTransform([x1,y1,x2,y2],colisions,wallId,normalType,colisionType,position){
-        normalType = normalType || {door:0,flags:{},move:1,sense:1};
-        colisionType = colisionType || {door:1,flags:{},move:1,sense:1};
+        normalType = normalType || IncarnateGamingLLC.SceneGen.defaultWall();
+        colisionType = colisionType || {door:1,flags:{},move:1,sense:1,ds:0};
         var newWall;
         const walls = [];
         if (x1 === x2){
