@@ -17,7 +17,7 @@ IncarnateGamingLLC.ForestGenerator = class ForestGenerator extends IncarnateGami
             }
         }
         const scene = await CONFIG.Scene.entityClass.create({name:name,width:width,height:height});
-        SceneGen.forestGeneration(settings.forest.treeNum, settings.forest.treeSize, settings.forest.trunkSize, settings.forest.breakAfter, scene);
+        IncarnateGamingLLC.ForestGenerator.forestGeneration(settings.forest.treeNum, settings.forest.treeSize, settings.forest.trunkSize, settings.forest.breakAfter, scene);
     }
     static forestGeneration(treeNum,treeSize,trunkSize,breakAfter,scene){
         treeNum = Number(treeNum) || 100;
@@ -40,7 +40,7 @@ IncarnateGamingLLC.ForestGenerator = class ForestGenerator extends IncarnateGami
             const trunk = trunkSize * width /100;
             const trunkSide = (width - trunk)/2;
             forceContinue=0;
-            var drawing = SceneGen.drawingObject();
+            var drawing = IncarnateGamingLLC.SceneGen.drawingObject();
             drawing.id = id;
             drawing.flags = {
                 type:"tree",
@@ -58,7 +58,7 @@ IncarnateGamingLLC.ForestGenerator = class ForestGenerator extends IncarnateGami
                 drawing.y = Math.random() * sceneHeight;
                 IncarnateGamingLLC.rollCount += 2;
                 forceContinue++;
-                var checkCollide = SceneGen.checkCollide(drawing,drawings,sceneGrid/10);
+                var checkCollide = IncarnateGamingLLC.SceneGen.checkCollide(drawing,drawings,sceneGrid/10);
             }while(checkCollide && forceContinue < breakAfter);
             if (forceContinue === breakAfter){
                 break;

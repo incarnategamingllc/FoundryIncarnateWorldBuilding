@@ -430,7 +430,7 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
         notes.forEach(note => {id = note.id > id ? note.id : id});
         const path = drawings.find(drawing => drawing.flags.type === "path");
         let note = {};
-        if (path !== undefined){
+        if (path !== undefined && path.flags.roomsParsed.length > 2){
             const pathLen = path.flags.roomsParsed.length;
             //Set first room on path to entrance
             let currentRoom = drawings.find(drawing => drawing.id === path.flags.roomsParsed[0].id)
@@ -465,6 +465,10 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
                 note.icon = "icons/svg/ice-aura.svg";
                 notes.push(note);
             }
+        }else{
+            let message = "Insufficient rooms for a lore based dungeon"
+            alert(message);
+            console.warn(message);
         }
         //Set all other rooms to normal rooms
         const otherRooms = drawings.filter(drawing => drawing.flags.type !== undefined && drawing.flags.type === "room");

@@ -21,7 +21,7 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends Application {
         options.top = settings.gmScreen.top;
         options.left = settings.gmScreen.left;
         options.template = "modules/incarnateWorldBuilding/templates/incarnateGMBlind.html";
-        options.classes = ["incarnate-Gms-Blind", "app", "window-app"]
+        options.classes = ["incarnate-gms-screen", "app", "window-app"]
         options.resizable = true;
         return options;
     }
