@@ -28,7 +28,8 @@ Hooks.on('ready', async () =>  {
     //Changes Note double left to different script
     const IncarnateNoteDoubleLeft = (function () {
         var cached_function = Note.prototype._onDoubleLeft;
-        return async function(ev){
+        return function(ev){
+            console.log("Cliicked a note!");
             const advance = Hooks.callAll("incarnateNoteDoubleLeft",ev,this);
             if (advance === false) return false;
             return cached_function.apply(this,arguments);

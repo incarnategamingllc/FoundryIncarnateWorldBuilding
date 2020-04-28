@@ -59,11 +59,11 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
                 roomMaxL:10,
                 roomDesc:true,
                 traceWalls:true,
-                floor:"modules/incarnateAssets/Images/Textures/Stone002_0512.JPG",
+                floor:"modules/incarnateWorldBuilding/textures/Stone002_0512.JPG",
                 floorColor:"#000000",
-                room:"modules/incarnateAssets/Images/Textures/Wood001_0512.JPG",
+                room:"modules/incarnateWorldBuilding/textures/Wood001_0512.JPG",
                 roomColor:"#000000",
-                hall:"modules/incarnateAssets/Images/Textures/Wood001_0512.JPG",
+                hall:"modules/incarnateWorldBuilding/textures/Wood001_0512.JPG",
                 hallColor:"#000000"
             },
             width:3000,
@@ -74,7 +74,7 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
         const user = game.userId;
         return {
             author:user,
-            bezierFactor: 0.5,
+            bezierFactor: 0,
             fillAlpha: 1,
             fillColor: "#000000",
             fillType: 0,
@@ -122,7 +122,7 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
     }
     static newNote(drawing,id){
         return{
-            entryId:"AAAAAAAAAAAAAAAA",
+            entryId:"ZZZZZZZZZZZZZZZZ",
             flags:{
                 tempType:"Dungeons",
                 template:"Q6ZQjy8GHootEcak",
@@ -131,14 +131,28 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
             },
             icon: "icons/svg/cave.svg",
             iconSize: 40,
-            iconTint: "#0000000",
+            iconTint: "",
             id: id,
             x: Number(drawing.x) + (Number(drawing.width)/2),
             y: Number(drawing.y) + (Number(drawing.height)/2),
             textAnchor: CONST.TEXT_ANCHOR_POINTS.CENTER,
-            text: ""
+            text: "Default Text"
         }
     }
+    static async newJournalEntry(name) {
+        const incRegions = game.settings.get("incarnateWorldBuilding","incRegions");
+        const data = {
+            name: name,
+            permission: {default:0},
+            folder:incRegions.currentRegion,
+            flags:{
+                date: IncarnateGamingLLC.Calendar.incarnateDate()
+            },
+            content:`<h1>${name}</h1>`
+        }
+        return JournalEntry.create(data);
+    }
+
     /*
      * colisionDrawings are an array of drawings that any overlaps need to be handled differently than an opaque wall
      * colisionType: {door:0,flags:{},move:1,:sense:1}

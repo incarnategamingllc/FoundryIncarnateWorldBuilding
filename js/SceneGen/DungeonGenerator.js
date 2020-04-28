@@ -5,18 +5,7 @@
 IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGamingLLC.SceneGen{
     static async newDungeon(name,width,height){
         const settings = game.settings.get("incarnate","incSceneGenSettings");
-        width = Number(width) || Number(settings.width) || 3000;
-        height = Number(height) || Number(settings.height) || 3000;
-        if (typeof name === "object"){
-            if (settings.title !== ""){
-                name = settings.title;
-            }else{
-                name = "Dungeon " + settings.sceneCount;
-                settings.sceneCount++;
-                game.settings.set("incarnate","incSceneGenSettings",settings);
-            }
-        }
-        const scene = await CONFIG.Scene.entityClass.create({name:name,flags:{dungeon:settings.dungeon},width:width,height:height});
+        let scene = await IncarnateGamingLLC.DungeonGenerator.createScene(name, width, height, settings);
         const newDungeon = await IncarnateGamingLLC.DungeonGenerator.dungeonGeneration(scene, settings.dungeon.rooms, settings.dungeon.roomMinL, settings.dungeon.roomMaxL, settings.dungeon.hallWidth);
         const dungeonWalls = await IncarnateGamingLLC.DungeonGenerator.dungeonWalls(newDungeon.drawings);
         let walls = dungeonWalls.walls,
@@ -28,11 +17,26 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
             drawings = dungeonTraceWalls.drawings;
         }
         if (settings.dungeon.roomDesc === true){
-            const dungeonRoomDesc = await IncarnateGamingLLC.DungeonGenerator.dungeonRoomDesc(drawings,notes);
+            const dungeonRoomDesc = await IncarnateGamingLLC.DungeonGenerator.dungeonRoomDesc(drawings, notes, scene);
             drawings = dungeonRoomDesc.drawings;
             notes = dungeonRoomDesc.notes;
         }
         scene.update({drawings:drawings,notes:notes,walls:walls});
+    }
+    static async createScene(name, width, height, settings){
+        width = Number(width) || Number(settings.width) || 3000;
+        height = Number(height) || Number(settings.height) || 3000;
+        if (typeof name === "object"){
+            if (settings.title !== ""){
+                name = settings.title;
+            }else{
+                name = "Dungeon " + settings.sceneCount;
+                settings.sceneCount++;
+                game.settings.set("incarnate","incSceneGenSettings",settings);
+            }
+        }
+        const journalEntry = await IncarnateGamingLLC.SceneGen.newJournalEntry(name);
+        return await CONFIG.Scene.entityClass.create({name:name,flags:{dungeon:settings.dungeon},width:width,height:height, journal:journalEntry._id});
     }
     static async dungeonGeneration(scene,rooms,roomMinL,roomMaxL,hallWidth,breakAfter){
         const settings = game.settings.get("incarnate","incSceneGenSettings");
@@ -425,7 +429,7 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
         }
         return {drawings:drawings,walls:walls};
     }
-    static dungeonRoomDesc(drawings,notes){
+    static dungeonRoomDesc(drawings, notes, scene){
         let id = 1;
         notes.forEach(note => {id = note.id > id ? note.id : id});
         const path = drawings.find(drawing => drawing.flags.type === "path");
@@ -435,33 +439,39 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
             //Set first room on path to entrance
             let currentRoom = drawings.find(drawing => drawing.id === path.flags.roomsParsed[0].id)
             if (currentRoom !== undefined && currentRoom.flags.note === undefined){
-                note = IncarnateGamingLLC.DungeonGenerator.newNote(currentRoom,id);
+                note = IncarnateGamingLLC.SceneGen.newNote(currentRoom,id);
                 currentRoom.flags.note = id;
                 id++;
-                note.flags.template="Q6l2NFgPnN1in4vL",
-                    note.flags.templateName="Cave Entrance"
+                note.entryId = scene.data.journal;
+                note.flags.template="Q6l2NFgPnN1in4vL";
+                note.flags.templateName="Cave Entrance";
+                note.text = "Cave Entrance";
                 note.icon = "icons/svg/door-exit.svg";
                 notes.push(note);
             }
             //Set second to last room on path to boss
             currentRoom = drawings.find(drawing => drawing.id === path.flags.roomsParsed[pathLen-2].id)
             if (currentRoom !== undefined && currentRoom.flags.note === undefined){
-                note = IncarnateGamingLLC.DungeonGenerator.newNote(currentRoom,id);
+                note = IncarnateGamingLLC.SceneGen.newNote(currentRoom,id);
                 currentRoom.flags.note = id;
                 id++;
-                note.flags.template="Q6PL8n85Rh2eGLNm",
-                    note.flags.templateName="Cave Boss Chamber"
+                note.entryId = scene.data.journal;
+                note.flags.template="Q6PL8n85Rh2eGLNm";
+                note.flags.templateName="Cave Boss Chamber";
+                note.text = "Cave Boss Chamber";
                 note.icon = "icons/svg/skull.svg";
                 notes.push(note);
             }
             //Set last room on path to treasure
             currentRoom = drawings.find(drawing => drawing.id === path.flags.roomsParsed[pathLen-1].id)
             if (currentRoom !== undefined && currentRoom.flags.note === undefined){
-                note = IncarnateGamingLLC.DungeonGenerator.newNote(currentRoom,id);
+                note = IncarnateGamingLLC.SceneGen.newNote(currentRoom,id);
                 currentRoom.flags.note = id;
                 id++;
-                note.flags.template="Q70b7Naw3dWkJsqA",
-                    note.flags.templateName="Cave Treasure Chamber"
+                note.entryId = scene.data.journal;
+                note.flags.template="Q70b7Naw3dWkJsqA";
+                note.flags.templateName="Cave Treasure Chamber";
+                note.text = "Cave Treasure Chamber";
                 note.icon = "icons/svg/ice-aura.svg";
                 notes.push(note);
             }
@@ -474,12 +484,13 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
         const otherRooms = drawings.filter(drawing => drawing.flags.type !== undefined && drawing.flags.type === "room");
         otherRooms.forEach(currentRoom =>{
             if (currentRoom !== undefined && currentRoom.flags.note === undefined){
-                note = IncarnateGamingLLC.DungeonGenerator.newNote(currentRoom,id);
+                note = IncarnateGamingLLC.SceneGen.newNote(currentRoom,id);
                 currentRoom.flags.note = id;
+                note.entryId = scene.data.journal;
                 id++;
                 notes.push(note);
             }else if (currentRoom !== undefined){
-                notes = IncarnateGamingLLC.DungeonGenerator.moveNote(currentRoom,notes);
+                notes = IncarnateGamingLLC.SceneGen.moveNote(currentRoom,notes);
             }
         });
         return {drawings:drawings,notes:notes};

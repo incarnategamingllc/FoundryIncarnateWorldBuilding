@@ -835,14 +835,9 @@ IncarnateGamingLLC.Reference = class Reference{
             return false;
         }
         var result, resultType;
-        if (template.flags.templateType === "NPCs"){
-            if (typeof npcGeneration !== "undefined"){
-                result = await npcGeneration(template,parentElement);
-                resultType = "Actor";
-            }else{
-                result = await this.populateCreateJournalTemplate(template,parentElement);
-                resultType = "JournalEntry";
-            }
+        if (template.flags.templateType === "NPCs" && typeof npcGeneration !== "undefined"){
+            result = await npcGeneration(template,parentElement);
+            resultType = "Actor";
         }else{
             result = await this.populateCreateJournalTemplate(template,parentElement);
             resultType = "JournalEntry";

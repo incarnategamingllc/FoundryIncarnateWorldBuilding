@@ -9,15 +9,15 @@ IncarnateGamingLLC.HyperlinkHelper = class HyperlinkHelper{
      * @param html
      */
     static addHyperlinkSupport(html){
-        var htmlDom = html[0];
-        this.addHyperlinkSupportToDOM(htmlDom, html);
+        var htmlDOM = html[0];
+        this.addHyperlinkSupportToDOM(htmlDOM, html);
     }
     static addHyperlinkSupportToDOM(htmlDOM, html){
-        if (htmlDom === undefined) return true;
-        IncarnateGamingLLC.Reference.crossReferenceSetClick(htmlDom);
-        IncarnateGamingLLC.Reference.populateSetClick(htmlDom);
+        if (htmlDOM === undefined) return true;
+        IncarnateGamingLLC.Reference.crossReferenceSetClick(htmlDOM);
+        IncarnateGamingLLC.Reference.populateSetClick(htmlDOM);
         IncarnateGamingLLC.Reference.secretSetContext(html[0],context);
-        IncarnateGamingLLC.Reference.rollMacroSetClick(htmlDom);
-        html = $(htmlDom);
+        IncarnateGamingLLC.Reference.rollMacroSetClick(htmlDOM);
+        html = $(htmlDOM);
     }
 }
