@@ -1,3 +1,6 @@
+/**
+ * Creates a double left click behavior on scene notes.
+ */
 Hooks.on("incarnateNoteDoubleLeft",(ev,note)=>{
     console.log(ev,note);
     if (note.data !== undefined && note.data.flags !== undefined && note.data.flags.template !== undefined && note.data.flags.template !== "" && note.data.flags.tempType !== " "){

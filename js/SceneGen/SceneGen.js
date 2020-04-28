@@ -35,9 +35,9 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
                 breakAfter:50,
                 treeNum:100,
                 treeSize:3,
-                floor:"modules/incarnateAssets/Images/Textures/Stone002_0512.JPG",
+                floor:"modules/incarnateWorldBuilding/textures/Stone002_0512.JPG",
                 floorColor:"#000000",
-                tree:"modules/incarnateAssets/Images/Textures/Wood001_0512.JPG",
+                tree:"modules/incarnateWorldBuilding/textures/Wood001_0512.JPG",
                 treeColor:"#000000",
                 trunkSize:33
             },
@@ -130,9 +130,13 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
                 room:drawing.id
             },
             icon: "icons/svg/cave.svg",
+            iconSize: 40,
+            iconTint: "#0000000",
             id: id,
             x: Number(drawing.x) + (Number(drawing.width)/2),
-            y: Number(drawing.y) + (Number(drawing.height)/2)
+            y: Number(drawing.y) + (Number(drawing.height)/2),
+            textAnchor: CONST.TEXT_ANCHOR_POINTS.CENTER,
+            text: ""
         }
     }
     /*
