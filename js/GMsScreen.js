@@ -165,8 +165,8 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends Application {
             add.addEventListener("click", IncarnateGamingLLC.DungeonGenerator.newDungeon);
         });
         let handlerResetMapSettings = async ev =>{
-            SceneGen.resetDefault();
-            await Reference.incarnateDelay(500);
+            IncarnateGamingLLC.SceneGen.resetDefault();
+            await IncarnateGamingLLC.Reference.incarnateDelay(500);
             ui._gmblind.render(false);
         }
         let resetMapSettings = htmlDom.getElementsByClassName("resetMapSettings");
@@ -199,26 +199,26 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends Application {
         ui._gmblind.render(true);
     }
     static async deleteLeast(ev){
-        const id = Reference.getClosestClass(ev.srcElement,"atLeast-entry").getAttribute("data-id");
+        const id = IncarnateGamingLLC.Reference.getClosestClass(ev.srcElement,"atLeast-entry").getAttribute("data-id");
         const settings = game.settings.get("incarnate","incStatRoll");
         settings.guarantee.atLeast.splice(id,1);
         game.settings.set("incarnate","incStatRoll",settings);
-        await Reference.incarnateDelay(50);
+        await IncarnateGamingLLC.Reference.incarnateDelay(50);
         ui._gmblind.render(true);
     }
     static async addMost(ev){
         const settings = game.settings.get("incarnate","incStatRoll");
         settings.guarantee.atMost.push({value:0, quantity:0});
         game.settings.set("incarnate","incStatRoll",settings);
-        await Reference.incarnateDelay(50);
+        await IncarnateGamingLLC.Reference.incarnateDelay(50);
         ui._gmblind.render(true);
     }
     static async deleteMost(ev){
-        const id = Reference.getClosestClass(ev.srcElement,"atMost-entry").getAttribute("data-id");
+        const id = IncarnateGamingLLC.Reference.getClosestClass(ev.srcElement,"atMost-entry").getAttribute("data-id");
         const settings = game.settings.get("incarnate","incStatRoll");
         settings.guarantee.atMost.splice(id,1);
         game.settings.set("incarnate","incStatRoll",settings);
-        await Reference.incarnateDelay(50);
+        await IncarnateGamingLLC.Reference.incarnateDelay(50);
         ui._gmblind.render(true);
     }
     static updateCheckbox(ev){
