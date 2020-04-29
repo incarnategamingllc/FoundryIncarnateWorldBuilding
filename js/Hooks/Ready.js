@@ -30,7 +30,7 @@ Hooks.on('ready', async () =>  {
         var cached_function = Note.prototype._onDoubleLeft;
         return function(ev){
             console.log("Cliicked a note!");
-            const advance = Hooks.callAll("incarnateNoteDoubleLeft",ev,this);
+            const advance = Hooks.call("incarnateNoteDoubleLeft",ev,this);
             if (advance === false) return false;
             return cached_function.apply(this,arguments);
         }

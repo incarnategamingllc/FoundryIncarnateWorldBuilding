@@ -18,11 +18,10 @@ Hooks.on("incarnateNoteDoubleLeft",(ev,note)=>{
                 var noteData = JSON.parse(JSON.stringify(note.data));
                 noteData.flags = {template:"",tempType:""};
                 noteData.entryId = newContent.result.data._id;
-                note.update(note.scene.data._id,noteData);
-                note.draw();
-                if(note.data.flags.tempType === "Dungeons"){
-                    const advance = Hooks.callAll("incDungeonsRoomDescription",ev,note);
-                }
+                note.update(noteData).then(returnedNote => {
+                    returnedNote.draw();
+                });
+                newContent.result.sheet.render(true);
             }
         });
         return false;

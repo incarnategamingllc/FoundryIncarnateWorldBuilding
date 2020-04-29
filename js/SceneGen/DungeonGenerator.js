@@ -485,6 +485,7 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
         otherRooms.forEach(currentRoom =>{
             if (currentRoom !== undefined && currentRoom.flags.note === undefined){
                 note = IncarnateGamingLLC.SceneGen.newNote(currentRoom,id);
+                note.text = "Cave Chamber";
                 currentRoom.flags.note = id;
                 note.entryId = scene.data.journal;
                 id++;
