@@ -8,19 +8,20 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
         let scene = await IncarnateGamingLLC.DungeonGenerator.createScene(name, width, height, settings);
         const newDungeon = await IncarnateGamingLLC.DungeonGenerator.dungeonGeneration(scene, settings.dungeon.rooms, settings.dungeon.roomMinL, settings.dungeon.roomMaxL, settings.dungeon.hallWidth);
         const dungeonWalls = await IncarnateGamingLLC.DungeonGenerator.dungeonWalls(newDungeon.drawings);
-        let walls = dungeonWalls.walls,
-            drawings = dungeonWalls.drawings,
-            notes = [];
+        let walls = dungeonWalls.walls;
+        let drawings = dungeonWalls.drawings;
+        let notes = [];
         if (settings.dungeon.traceWalls === true){
             const dungeonTraceWalls = await IncarnateGamingLLC.DungeonGenerator.dungeonTraceWalls(walls,drawings);
             walls = dungeonTraceWalls.walls;
             drawings = dungeonTraceWalls.drawings;
         }
         if (settings.dungeon.roomDesc === true){
-            const dungeonRoomDesc = await IncarnateGamingLLC.DungeonGenerator.dungeonRoomDesc(drawings, notes, scene);
+            const dungeonRoomDesc = await IncarnateGamingLLC.DungeonGenerator.dungeonRoomDescription(drawings, notes, scene);
             drawings = dungeonRoomDesc.drawings;
             notes = dungeonRoomDesc.notes;
         }
+        drawings = drawings.filter(drawing=>drawing.flags.type !== "path");
         scene.update({drawings:drawings,notes:notes,walls:walls});
     }
     static async createScene(name, width, height, settings){
@@ -52,7 +53,7 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
         const sceneWidth = Number(scene.data.width)*1.2 - roomMinL + sceneGrid;
         const sceneHeight = Number(scene.data.height)*1.2 - roomMinL + sceneGrid;
         hallWidth = Number(hallWidth)* sceneGrid || 2 * sceneGrid;
-        const drawings =[];
+        let drawings =[];
         let reservedId = 1
         let hallId = rooms * 2;
         let dunId = rooms * 2 + hallId;
@@ -429,12 +430,14 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
         }
         return {drawings:drawings,walls:walls};
     }
-    static dungeonRoomDesc(drawings, notes, scene){
+    static dungeonRoomDescription(drawings, notes, scene){
         let id = 1;
         notes.forEach(note => {id = note.id > id ? note.id : id});
         const path = drawings.find(drawing => drawing.flags.type === "path");
         let note = {};
-        if (path !== undefined && path.flags.roomsParsed.length > 2){
+        if (path === undefined){
+            //If the path has already been deleted, then skip special room types and only add rooms.
+        }else if (path.flags.roomsParsed.length > 2){
             const pathLen = path.flags.roomsParsed.length;
             //Set first room on path to entrance
             let currentRoom = drawings.find(drawing => drawing.id === path.flags.roomsParsed[0].id)
@@ -511,7 +514,7 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
                 drawings = drawings.filter(drawing => drawing.flags === undefined || drawing.flags.type === undefined || drawing.flags.type !== "wall");
             }
             if (scene.data.flags !== undefined && scene.data.flags.dungeon !== undefined && scene.data.flags.dungeon.roomDesc === true){
-                const dungeonRoomDesc = await IncarnateGamingLLC.DungeonGenerator.dungeonRoomDesc(drawings,notes);
+                const dungeonRoomDesc = await IncarnateGamingLLC.DungeonGenerator.dungeonRoomDescription(drawings, notes, scene);
                 drawings = dungeonRoomDesc.drawings;
                 notes = dungeonRoomDesc.notes;
             }
