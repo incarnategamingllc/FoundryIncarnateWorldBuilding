@@ -111,8 +111,8 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
         path.flags={type:"path",roomsParsed:[]};
         path.type="p";
         path.id = reservedId;
-        path.strokeAlpha = 0;
-        path.strokeWidth = 0;
+        path.strokeAlpha = 1;
+        path.strokeWidth = 1;
         reservedId++;
         let trackPoint = [0,0];
         let distanceOff = 10000000;

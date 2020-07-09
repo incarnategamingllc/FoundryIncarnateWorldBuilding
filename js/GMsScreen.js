@@ -1,8 +1,8 @@
-IncarnateGamingLLC.incarnateGMBlind = function() {
-    if (ui._gmblind === undefined){
-        ui._gmblind = new IncarnateGamingLLC.GMsScreen();
+IncarnateGamingLLC.openGmScreen = function() {
+    if (ui._incGMScreen === undefined){
+        ui._incGMScreen = new IncarnateGamingLLC.GMsScreen();
     }
-    ui._gmblind.render(true);
+    ui._incGMScreen.render(true);
 }
 /**
  * Creates a GMsScreen to assist in accessing custom Incarnate functions

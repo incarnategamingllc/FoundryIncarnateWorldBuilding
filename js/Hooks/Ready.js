@@ -2,7 +2,7 @@ Hooks.on('ready', async () =>  {
     if (game.settings.get("incarnateWorldBuilding","anvilButtons")){
         var anvil = document.getElementById("logo")
         if ( game.user.isGM ) {
-            anvil.setAttribute("onclick","IncarnateGamingLLC.incarnateGMBlind()");
+            anvil.setAttribute("onclick","IncarnateGamingLLC.openGmScreen ()");
         }else{
         }
         anvil.ondragover = ev => IncarnateGamingLLC.Anvil.incarnateOnDragOver(event);
@@ -29,7 +29,6 @@ Hooks.on('ready', async () =>  {
     const IncarnateNoteDoubleLeft = (function () {
         var cached_function = Note.prototype._onDoubleLeft;
         return function(ev){
-            console.log("Cliicked a note!");
             const advance = Hooks.call("incarnateNoteDoubleLeft",ev,this);
             if (advance === false) return false;
             return cached_function.apply(this,arguments);

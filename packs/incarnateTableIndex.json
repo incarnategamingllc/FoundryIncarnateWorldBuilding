@@ -1,0 +1,140 @@
+{
+  "background":{"table":"","backgrounds":[
+    {"name":"Acrobat","weight":1,"fid":"HmcVSs83HIB3xDx3","personality":"I5qZ7Hl1YV7wCfK1","ideal":"I7UpcOlfoYkpxMPB","bond":"I9grVBd7WZ8MhH9W","flaw":"IJJDHzJt3vesTJpO","misc":[{"name":"Specialty","table":"htdmiAjk8MxdCviV"}]},
+    {"name":"Adventurer","weight":1,"fid":"IOyfCcnz7IOrxjGh","personality":"IWxECtGdqu6ypbvZ","ideal":"IfpNu91EAWUwNytT","bond":"IlApRFMo2SoSmFEY","flaw":"IzvWgNGcKt0tW8wf","misc":[{"name":"Party Role","table":"hflCRZZ5cSNOxKct"},{"name":"Start","table":"hfwzjyuGh7CcMYaK"}]},
+    {"name":"Anchorite (Hippy)","weight":1,"fid":"J1ld0K8bUip6TOrX","personality":"JBFPVqjuIXYWGY10","ideal":"JLpR6jwYN4yf1WGH","bond":"JNAReI2iUCfJtA2Z","flaw":"JQptWmvhlmHQfLaL","misc":[]},
+    {"name":"Antiquarian","weight":1,"fid":"JSBX7lAqcLNDqMcT","personality":"JhbEaKmR0zTIFOTK","ideal":"JjOXcKmcEGDoL0U0","bond":"JkwhJFaen94UARZl","flaw":"JpETzRxaWJF4DjbS","misc":[]},
+    {"name":"Apothecary","weight":1,"fid":"JvKH9MdSlTAIbQwf","personality":"JzQE9K0a13xCYhMW","ideal":"JzQGl6RnAcbA4fZB","bond":"K5uq1PnkL0VzMw23","flaw":"KALF4WTukjhjfJD1","misc":[]},
+    {"name":"Artist","weight":1,"fid":"KAPNI9dA5BXc5pyr","personality":"KTyMpirthrvg8kwK","ideal":"KUKu8GnNL3sZmwFU","bond":"KVx6DCDeC33aIvLJ","flaw":"KZQV8yyShD6fF5Ys","misc":[]},
+    {"name":"Assassin","weight":1,"fid":"KbgjKBkjMA96LT9J","personality":"Kg9t8RdRAZ1PjXUh","ideal":"Kl7YJougXDa4we1Y","bond":"KmkT8VGKePbIuXi4","flaw":"KsPCobmHQo7VSXbC","misc":[{"name":"Association with the Guild","table":"i2NWMM0eGsUe94OP"},{"name":"Current Assignment","table":"i2xG7lMXULlM1lfk"}]},
+    {"name":"Barmaid","weight":1,"fid":"KtbUzDRZ3x7wWbjU","personality":"KyM7DUueAZ7tddtk","ideal":"KztCS6i1JRanTMXg","bond":"L0SDP38JYs7JjZjy","flaw":"L3ScjvWDWCOkUrN3","misc":[{"name":"Employment","table":"hgr7OdviFd5KLdGR"}]},
+    {"name":"Battlesmith","weight":1,"fid":"L7RehLs3b8nDVk3K","personality":"LEbvRMdHKoaqTNr1","ideal":"LG37ngbqfRQRV9lT","bond":"LHn9XFss73NWLzxC","flaw":"LHwIJDeBkO6TDYZg","misc":[]},
+    {"name":"Beggar","weight":1,"fid":"LaMt1DVTnjmsUosW","personality":"LpLpLKaxcA9VOx0M","ideal":"Lu2K6sf15gRfVRbF","bond":"Luv97kgEoYoxeb35","flaw":"Lv7WJLS5Cl2DtFOY","misc":[{"name":"Friends","table":"i5xk7tA7o3EcI7bx"}]},
+    {"name":"Blacksmith","weight":1,"fid":"Lwph1z6XdjMGB46Z","personality":"MDE3yLd68dvu5HQy","ideal":"MDTC79J3rjXpPK4e","bond":"MG3HP99kqCL2apKk","flaw":"MK3YmHhZA0rhnlew","misc":[{"name":"Specialties","table":"i6fU0oqSz71r5ZJE"}]},
+    {"name":"Captain (Sea)","weight":1,"fid":"MQqz8OHCCtOe9RZn","personality":"MTbxyH9N1zexrslX","ideal":"MUPAXeH2lFioWGTL","bond":"MUoa9gkxOw4bt7l3","flaw":"MXJLVXggPkut3m8S","misc":[]},
+    {"name":"Chef","weight":1,"fid":"MZQ9md5cvhKYZ8VT","personality":"Mh18N48bZPEMb8K3","ideal":"Mh77CSN0TqED7D1P","bond":"MkBgYxHcPTQV60pQ","flaw":"MpRE4nJrnBVSAIby","misc":[{"name":"Brigade de Cuisine","table":"hhfEIw6LPZ06Zga4"}]},
+    {"name":"City Guard","weight":1,"fid":"MqcZ4JpJAgYsodkS","personality":"N9aXByyycPh7KSFj","ideal":"NEZioNV0OoN3nNf5","bond":"NWMvev1zz0WolY7m","flaw":"NYEpfl30LrA2akxS","misc":[{"name":"Specialty","table":"hiCeIQN9yyaeFpJW"}]},
+    {"name":"Cleric","weight":1,"fid":"NZe0J0ixSp39CwQT","personality":"Njao79OL3yX18DED","ideal":"NqazJtxIDuGCw59d","bond":"Nru3OBcIXaKsR8Qz","flaw":"Nw684F4Mjg53sT0x","misc":[{"name":"Specialty","table":"iCUfxtxLxgd3YFNz"}]},
+    {"name":"Cobbler","weight":1,"fid":"O1HozyH8kqzFl0yq","personality":"OJ5OBtFRxdjx4kTd","ideal":"OJaGmiPFiIzzaZOc","bond":"OONUjPtzbEH5RPn9","flaw":"OOcUF57pUS6B21f2","misc":[]},
+    {"name":"Craftsman","weight":1,"fid":"OS48C1FfRkkwG2pQ","personality":"ObOSWJOoLLIRIpng","ideal":"Oc1BKYaYcjqLKf2E","bond":"OfD35xJVP4ICPUK1","flaw":"Okr7DhqH4ttnGBMB","misc":[{"name":"Specialty","table":"iELvjxaAZFYV3QZk"},{"name":"Tools","table":"iEZCxFJzqpf50Rzv"}]},
+    {"name":"Criminal","weight":1,"fid":"OogZrpHUaUh3gtE5","personality":"OrNbt2F0igfmsQRk","ideal":"OsPFnPsn0rYaryrP","bond":"P7BHhvGZQ4e6DiZw","flaw":"P8F6EJpgSMatifpX","misc":[{"name":"Specialization","table":"hj4fzosXSIwiK1C1"}]},
+    {"name":"Curator","weight":1,"fid":"P8Kezqma4kH2RNgE","personality":"PKwHgqdt4mbkeXxX","ideal":"PMpOA039NNgSBbN3","bond":"PP9b0U7NTaN8xwut","flaw":"PQjtehMmKZrr5XyV","misc":[]},
+    {"name":"Demon Hunter","weight":1,"fid":"PTIOZqaZQvL5yQ5M","personality":"PoaVrJYsCYvtbKcF","ideal":"PwgN8RdMrOjx4DrK","bond":"PxndJjZTVpFSjLmF","flaw":"Q2BM9KmLYMIXKT4N","misc":[]},
+    {"name":"Detective","weight":1,"fid":"Q4EDEd5yAEEqXwan","personality":"QCHqkm9MJ9lkQZVP","ideal":"QDJ0RPmc6M3RoNrx","bond":"QFeV0wOcNghvEa2w","flaw":"QHZHxgQEuJO80crf","misc":[]},
+    {"name":"Doctor","weight":1,"fid":"QHueAgFarso9M5BG","personality":"Qj3cJ567kHRDhrCf","ideal":"QrCCnAIwt07x1pdt","bond":"QuceN0ZE88Des8DQ","flaw":"QzYTDpQ58JEQL8BX","misc":[{"name":"Specialties","table":"hjemS8KSM0IBQkYF"}]},
+    {"name":"Farmer","weight":1,"fid":"RGqBgtnvU5vHzaXR","personality":"RLEnzC2s3r5dDsUV","ideal":"RO52T8he8apv3K4z","bond":"ROEUbbkR5MkqnM6d","flaw":"RXN9HgUFwP4QZKUm","misc":[{"name":"Specialization","table":"hkqLpekvKoyKdaEM"}]},
+    {"name":"Fiefless Lord","weight":1,"fid":"Rx6MTlXkBicq6MgL","personality":"SELot6ANoxpiPX86","ideal":"SKJAlZIfpmiLl6Hd","bond":"SPyHrgq0myANn9Oh","flaw":"SULZYYU0yJm9ixzn","misc":[{"name":"Reasons Land was Lost","table":"iJnuZ4QeEdjffGQ8"}]},
+    {"name":"Firstmate","weight":1,"fid":"SdhiLzfPRiGOf5xW","personality":"SlkCM0MjapdavXQg","ideal":"Sn3qkpBuuMU1hHQ0","bond":"SnjQLrQyPt3dk0Ms","flaw":"SpYjKcYQCP13qAgv","misc":[]},
+    {"name":"Fletcher","weight":1,"fid":"SpvdwIALjZ2t4ZuI","personality":"T8Lqf1JQFQS6b2sL","ideal":"T8Yk0sL38UsQRDxr","bond":"TCcqrNlP11JIOoDI","flaw":"TD3f15XIVJe58EDb","misc":[{"name":"Specialties","table":"iNRuLmgUDRCiuRKp"}]},
+    {"name":"Gambler","weight":1,"fid":"TFav9emvWxlipt74","personality":"TPxYCYkJEWqVdOIg","ideal":"TRS2VfnMNB1wUabw","bond":"TYqgAxi332E1DAKU","flaw":"TatXtmUzx5olVeWL","misc":[]},
+    {"name":"Government Liaison","weight":1,"fid":"TcufIk3OBrLiTyk8","personality":"Tjcc0AkuD1rn5Eio","ideal":"TjjkaIyRzW5ceLg2","bond":"Toq10urjF4nnyC7a","flaw":"TvtupgWW76BVXYjO","misc":[{"name":"Hidden Ace","table":"iRK11qgCIeffl03B"}]},
+    {"name":"Groom","weight":1,"fid":"U0CI0vSAWjxdwqkh","personality":"U4H8c0R5Bv7jc1nz","ideal":"U6mTvnob3uOQi6dJ","bond":"UAXZCIQQTgq8b0Ov","flaw":"UAlAQ6GDGgc5Yc3c","misc":[{"name":"Specialty","table":"iRs7T1Dc8AdpoDzj"}]},
+    {"name":"Headhunter","weight":1,"fid":"UDcJ80LctlKAFGtm","personality":"UHh3fhGvYNsX259B","ideal":"UNO5yv6OmBySlWW7","bond":"UORuI52E6OiRsdPC","flaw":"UOj74XLmoC2csQWn","misc":[]},
+    {"name":"Hooded Figure","weight":1,"fid":"UTFIRLj1Bfq1uktV","personality":"UcIE4qvd9zQV41Vo","ideal":"UcrvjrjUPkd5jgAy","bond":"Ul4s5ToN9BwFgpEi","flaw":"Un6A9KQ9zookOK5q","misc":[{"name":"Past","table":"hmrYBt3hBOtmBibR"}]},
+    {"name":"Horse Trainer","weight":1,"fid":"UvN44CmOT0eFXyEK","personality":"UxWG2s10TETbcV5Z","ideal":"V5HvUZh1ICmJoeLZ","bond":"V7BMrNJqWMXbsyuy","flaw":"VEeDt42y9fIyQMXm","misc":[{"name":"Specialty","table":"iTSOrXPkv8Yqkyij"}]},
+    {"name":"Judge","weight":1,"fid":"VQHM6BVpfc5UpPCV","personality":"W8yyCIFV9D8l0mam","ideal":"WHGOcPSTWBEAxNwC","bond":"WKKMULo6CIlQtfDe","flaw":"WMCCWI8PzFaSKt9K","misc":[{"name":"Specialty","table":"iTzZlOXqugiVkA0c"}]},
+    {"name":"King","weight":1,"fid":"WQjuxgGWNSXNvbnK","personality":"WWBwTincq6rH63GZ","ideal":"WXNXv0VxlA2P14Gb","bond":"WZxP07cRy30qsViQ","flaw":"WaZrrrDpOnLkbvDE","misc":[]},
+    {"name":"King in Disguise","weight":1,"fid":"WbP2ShwBIRnZLhFH","personality":"WlwAdWUx4Uc87GWY","ideal":"WnaOY1VhA1eucnzn","bond":"WrZlmvrZIw0fhaUD","flaw":"WtuohhcEsUblomWY","misc":[{"name":"Why Disguised","table":"iWXJcOVkJ5fTkQ9u"}]},
+    {"name":"Librarian","weight":1,"fid":"WwcOOSj0e5JCc3hK","personality":"X6wX78F4VTGteLz1","ideal":"XNebZ5Tw8SxRt9uA","bond":"XT6PBQ2mBJ0vllvU","flaw":"XUd47zFdragwyUUA","misc":[]},
+    {"name":"Mayor","weight":1,"fid":"XbNo4y5ZiFC9RTzl","personality":"Xsvk5VH02IwTNyjy","ideal":"Xsvxuy8U0AlH0WQ3","bond":"XzfoSYU9Swn4amep","flaw":"YArUcGjTguR1Zb4e","misc":[]},
+    {"name":"Mercenary","weight":1,"fid":"YBYNc4FHpPdRbzuk","personality":"YUWzEQMPb8PgTVcb","ideal":"YY1Saovuystwr1vv","bond":"YbitVtn4w91KqClW","flaw":"Yd8HGbEH0o6FfsZ8","misc":[]},
+    {"name":"Messenger","weight":1,"fid":"Z63yVdjqI5Azrr2K","personality":"Z91Xm36So1Z0vMVQ","ideal":"ZAKYilz14iaUNEQa","bond":"ZGhP8p2if3hb4doE","flaw":"ZI00JXb8sO4wDeNF","misc":[]},
+    {"name":"Military Instructor","weight":1,"fid":"ZIN5LC5UizL3BEsi","personality":"ZTrkBTHDMLu9FDhK","ideal":"ZXZUv2egRUwTgrlC","bond":"ZZkkARk8AgzcGeXK","flaw":"ZenN4SWTgzbbvuSw","misc":[]},
+    {"name":"Miller","weight":1,"fid":"Zfxzy2pGD0Vy9y5Z","personality":"Zy7SOLX5jkwKlaPc","ideal":"a0WNEmLk6dj4g4dU","bond":"a1HaO59zwcjTYGDV","flaw":"aAU8oHnbV3qIZBFS","misc":[]},
+    {"name":"Monastic","weight":1,"fid":"aFG1eD8rTDk0gyUG","personality":"aYXq3AkWWX66OSmV","ideal":"aaA3cSQjhHMnJZCc","bond":"ajPvjAlxw9qNJwpG","flaw":"aoelZExHwjkWjlmO","misc":[]},
+    {"name":"Noble Guard (Bodyguard)","weight":1,"fid":"aoh9WohtgugyfqQA","personality":"asRtdahGEn52uzL0","ideal":"b31Nr0oPKhS0BnpO","bond":"b344SEMs92OqOxi6","flaw":"b8dbZ2CVFKqlSOOj","misc":[]},
+    {"name":"Priest","weight":1,"fid":"bAPUvNNL81izdm8k","personality":"bJ5buejQHCxUJrnp","ideal":"bMTUuW1JZVAe9fTV","bond":"bVOq6MAFiyefB6dX","flaw":"baiURYLSLBznE7Lj","misc":[{"name":"Specialty","table":"igFdh0z1oqx34gW1"}]},
+    {"name":"Prince","weight":1,"fid":"bczJXra6Mg0wjkLh","personality":"birA3ekVsOpyXqeL","ideal":"biuPhAIpXtrFW86j","bond":"bmtWfx0MfkEA6Jfd","flaw":"bnFk2J4zBvbI0u11","misc":[]},
+    {"name":"Professor","weight":1,"fid":"bppZ52uxPE1QAeSi","personality":"cAWx12pvi4TZCay2","ideal":"cBaP9vjeIro4rw1m","bond":"cD8JEyOfa650zCXi","flaw":"cEgJgMENTeUMN8WL","misc":[{"name":"Specialty","table":"ijbqiKX8b0XJYorb"}]},
+    {"name":"Prospector","weight":1,"fid":"cGAlFRnpJ6fTVGpt","personality":"cOahjhI35sQALhxn","ideal":"cVa2CFmGf2CcalTj","bond":"cXS5zdndr6QBqHi0","flaw":"cqBFqZMPPHiMY3un","misc":[]},
+    {"name":"Quartermaster","weight":1,"fid":"crAaSG8rT70sfMIU","personality":"d8gaYuTCMzU3sIvH","ideal":"dHqUZvXBPC8Y4GpN","bond":"dHt8JG4QdhZjijkU","flaw":"dKTuGUgSYee4JFS0","misc":[]},
+    {"name":"Rabbi","weight":1,"fid":"dNVHapRBz2t4DuTY","personality":"dbbq4WBgRtOj8OKK","ideal":"dd7Ne8PcgsjX0h2D","bond":"ddpXJR6XEln22wsl","flaw":"dkjAeTBcOY4zsjqV","misc":[]},
+    {"name":"SeaDog","weight":1,"fid":"duDZkQcA3CvfFYcf","personality":"e7ZfEMmN0VzqAbGz","ideal":"e7hr1zYDTkfBFiDF","bond":"eDur6RxVnMh9KcRu","flaw":"eFSH4BCrzAAeM6ij","misc":[]},
+    {"name":"Seamstress","weight":1,"fid":"eJGywSCx0W4zORZ3","personality":"eVsoSmbbmUVcGUpM","ideal":"eWix7dGYmn7JsN7G","bond":"eXnvdcDH9yhflsGf","flaw":"eYAQo0jfOSXWBmkL","misc":[{"name":"Specialty","table":"itzA5oG8krs4tt5O"}]},
+    {"name":"Spy","weight":1,"fid":"eqWNvGPD2ux0mcqH","personality":"f1t7wDkmAfD2nZ60","ideal":"fB5hSg6t9aUxJpJK","bond":"fEGsgJrpkZXCzgPf","flaw":"fIf3IFirUnXALGgn","misc":[{"name":"Mission","table":"hqKWr32UVErfh91h"}]},
+    {"name":"Stable Boy","weight":1,"fid":"fIzBpnhk9cd9hDrJ","personality":"fSStqfdu2lgoS79J","ideal":"fT9mMyR3rfTUv5ec","bond":"fVTR1OHEKCtjZce0","flaw":"fWl1tEGxtmAPJEE4","misc":[{"name":"Specialty","table":"iwIJNhfgcYshc59K"}]},
+    {"name":"Student of Magic","weight":1,"fid":"ffcaO4hkEaQ6FIUM","personality":"fqNUamADmSjyXz5t","ideal":"frzT390nQE9vvMPQ","bond":"fzHPYDsCaVZVsln6","flaw":"g1D0i3ThtfqhkWRh","misc":[]},
+    {"name":"Tavern Owner","weight":1,"fid":"g53ru9UiiVwMGZA5","personality":"gA4u44xgZ51EHeen","ideal":"gAAMN03ndkt4QEaK","bond":"gBvDzyEcAkpPqlnF","flaw":"gDM0hxoMYsEDCZus","misc":[{"name":"Specialty","table":"ixaEM52cdKCVmfRZ"}]},
+    {"name":"Teacher","weight":1,"fid":"gRB3XttJnUnlhE2q","personality":"gbRhKI2TBolUpgHi","ideal":"gbzCZNWiTa9yH23Q","bond":"gccMkO9ZwNs0U88E","flaw":"ggEesPDAADmlFRT5","misc":[]},
+    {"name":"Tribesman","weight":1,"fid":"gjTDU8oan5qtCtTv","personality":"gwDQLrKGRxHLQbm3","ideal":"gwhvANVYwIF7pRsy","bond":"h1BjpNJ3sFqtsRxN","flaw":"h575PEXLdobBELT6","misc":[]},
+    {"name":"Urban Vigilante","weight":1,"fid":"hB563tP81PqOcnu0","personality":"hJUP7VO5LoEBybbh","ideal":"hOByZXeGZphUCRQ1","bond":"hRlljH01XtJ1mNrQ","flaw":"hUQZfgVRCakkR2yZ","misc":[{"name":"Origin","table":"hsJnqTwmmvAZdgsU"}]},
+    {"name":"Waterfall Monk","weight":1,"fid":"hVPUVmDvq9k81KEh","personality":"hp8eGS7j0ofx7GKw","ideal":"hrJydSWw3U1TZoPF","bond":"hvtjue3P4dIe1ai9","flaw":"i34wDVLrngVLV7jY","misc":[]}
+  ]},
+  "race":{"table":"grKe1NE8EnwXFMVx","races":[
+    {"name":"Aloii","weight":1,"fid":"dxuuqSaGBfGA15rw","traits":"e1EIkFePFW7RZn4l","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fTAgBIapq1tGP2YJ","descriptionMale":"orfxC5aihcHeDjW7","imageFemale":"","imageMale":"","clan":"","nameFemale":"nopzyubSOGrOZ4uw","nameMale":"nosnwmNrVjbSDF7h","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Antilinoid","weight":1,"fid":"e8uP7qcaZwP7YP5V","traits":"e2ipgHDmw39YE4nA","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fTOGn0K6gyB07DuP","descriptionMale":"ouU64xPrIDjdLjpV","imageFemale":"","imageMale":"","clan":"","nameFemale":"npQ9KTyGdNAx5moa","nameMale":"nptFkqqgt8RiKZZc","subrace":{"table":"eWRx7Az3OmKflTk7","subraces":[
+      {"name":"Integrated","weight":1,"fid":"eDaT29Kedy6cwHmZ","traits":"gL5ZgkWz5Vv6Z8wE"},
+      {"name":"Old Ways","weight":1,"fid":"eHEJkKX4mHSo3Z7B","traits":"gLBODQUjeYkmUoM2"}
+    ]}},
+    {"name":"Dragonborn","weight":1,"fid":"eKCoBAYUbvTR3C99","traits":"e2ymNn2ptOjVdlNB","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fTZZsvxQg1Vwcd3y","descriptionMale":"owQ8qX41vdsMrpc2","imageFemale":"fkn9z0EdnFS8h6qL","imageMale":"fmNMdIJVA6n18Zbt","clan":"o1LDW5WDAK2tHbvs","nameFemale":"o1NJfHQb3Qq0W73t","nameMale":"o1l6ecpYDU5Xee5b","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Dwarf","weight":1,"fid":"eQiVKygFtERDTAjJ","traits":"e4WmSvW0JT4POFpZ","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fTgVubh2jOlWq2G7","descriptionMale":"ownV837igJovmg3M","imageFemale":"fmQv7s0BfMbMqrKh","imageMale":"fmj9qeLAUPyp3Jht","clan":"o2LuQxF7vowofqx7","nameFemale":"o2R2ja1NH7QD6sO4","nameMale":"o3u2jal5uAtMvuKU","subrace":{"table":"eWgFHXxytuzJ4KBn","subraces":[
+      {"name":"Bronzebeard Clan (Ironforge Dwarf)","weight":1,"fid":"eaAnHwt7J1pNC4ZG","traits":"gLNIIC8RQRlwGXWH"},
+      {"name":"Cloud Dwarf","weight":1,"fid":"ecBqqBFjVYFeCtYi","traits":"gNAdgN5jrqn8Q0ko"},
+      {"name":"Firebeard Dwarf","weight":1,"fid":"ednVVJFX2lLOI7UB","traits":"gOaBqYUBiZzyI3el"},
+      {"name":"Frostbeard Dwarf","weight":1,"fid":"efZExR8BTAqG2scG","traits":"gPyU6frfDRTOF7Xc"},
+      {"name":"Grey Dwarf","weight":1,"fid":"egxDcnszCJuQoHAb","traits":"gQTfBFkeU4wb65ra"},
+      {"name":"Highlander Dwarf","weight":1,"fid":"emfMbHFJvM3F20HR","traits":"gTJyBFScqJ8zF0F6"},
+      {"name":"Hill Dwarf","weight":1,"fid":"epXk9LHQl0XlrH4R","traits":"gTdLyEdvlI7SoSp1"},
+      {"name":"Orecutter Dwarf","weight":1,"fid":"er7gU7UOMIiclAXu","traits":"gU0qFtjkOEJfkBIY"},
+      {"name":"Rune Dwarf","weight":1,"fid":"esrBlqjPbmemOn5A","traits":"gVP4spB15RtbjhEG"},
+      {"name":"Volcano Dwarf","weight":1,"fid":"euYc3GreFXDfSnpV","traits":"gWGVSkDsPbVHnrar"},
+      {"name":"Wildhammer Clan","weight":1,"fid":"ewolm4pzlBaCYAyJ","traits":"gWHvY96iRaJJDxoA"}
+    ]}},
+    {"name":"Elf","weight":1,"fid":"f4NSH1zpr98bxf1a","traits":"e5xLzgMdKU9ST5K7","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fUbxY1tqAtfktfC8","descriptionMale":"oxU4miUoQdWtDZ0X","imageFemale":"fnGZyJn1CaGnyJCR","imageMale":"fnGeS39ACxfGuk0m","clan":"","nameFemale":"fU6v7HvdWzwlv3mV","nameMale":"o4PGtGelG9A2lvKJ","subrace":{"table":"eWgQUTliAKsdIq8t","subraces":[
+      {"name":"Blood Elf (Sand Elf, Low Elf)","weight":1,"fid":"fHqN9oyMRc62kcWQ","traits":"gWl5zqeXcxAYcvrI"},
+      {"name":"Brobdingnagian Elf","weight":1,"fid":"fKuFtZYObnjlqGyp","traits":"gXGoP79p8fT8JOZE"},
+      {"name":"Crystal Elf (Vitreur)","weight":1,"fid":"fNc0y7oGJ9Agmfqi","traits":"gXdbL7OKalvyiIc9"},
+      {"name":"Dark Elf","weight":1,"fid":"fSQvVFpbqcNvaAoP","traits":"gar8yscprMElD0hQ"},
+      {"name":"Exocoetidae Elf","weight":1,"fid":"fUIviM8AtOQao3sT","traits":"gbsSGY4n3T4JVqeJ"},
+      {"name":"High Elf","weight":1,"fid":"fW5GH7bFpx0ry7ND","traits":"gcWtcucsxFbSDxeG"},
+      {"name":"Horselord Elf","weight":1,"fid":"fZtG8WqlSaP7TBFe","traits":"gd2Hh8YbDVdlVkEO"},
+      {"name":"Urban Elf","weight":1,"fid":"ffDjahXAw5t0iGjO","traits":"gdMIuQRJ2wWoZ469"},
+      {"name":"Vluln Elf","weight":1,"fid":"fhFORcXkwym0JQRh","traits":"gde2dOos4tVkuDVZ"}
+    ]}},
+    {"name":"Enlightened Beast","weight":1,"fid":"fjYk3REdKaiH4awh","traits":"O3guC6i3IKpneqAz","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fhXiOXUHfMRGKImK","descriptionMale":"O0vxNUxcln9LDsfK","imageFemale":"fnLlOs5eS0gjF8QJ","imageMale":"fneSeHC7BNqvI8yD","clan":"","nameFemale":"nnJKhdqCp2i4ztVI","nameMale":"nncpt1qiDlAB9EO3","subrace":{"table":"O30gOJmFxKl4K69M","subraces":[
+      {"name":"Bear","weight":1,"fid":"folUcLbRl2XRs1XO","traits":"geJEYLzDWRMDQ52x"},
+      {"name":"Dog","weight":1,"fid":"ftwVjp2mwoBa14kG","traits":"gfbz3RhElhbfGdPr"},
+      {"name":"Monkey","weight":1,"fid":"fxmgpfCnfaqDqOVn","traits":"gg1tvMxjnr5QVMQR"},
+      {"name":"Owl","weight":1,"fid":"g2TIXbr3NPrORuXh","traits":"ggsXLP4uIm9zYgKs"},
+      {"name":"Pony","weight":1,"fid":"g8c4D0g0Ydu4U0YN","traits":"ggy6nnenHtKBazcU"}
+    ]}},
+    {"name":"Gnome","weight":1,"fid":"gDD4gCN41zZjvj5D","traits":"e6YUT1JGEDcthzeL","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fV2SVUfhMS6JCvTu","descriptionMale":"oy8JoCXl5MwfWIJ6","imageFemale":"fngxLsRxrVm3PZTK","imageMale":"fnvdwPINtYvX7ctM","clan":"","nameFemale":"oGtjWWU4G3cyvSvJ","nameMale":"oHkQZ0UmWlJUKN5b","subrace":{"table":"eWk8581QAGCpUTRh","subraces":[
+      {"name":"Cliff Gnome","weight":1,"fid":"gP7eivN9OErpdZaR","traits":"ghm4JJuEeF3PEmtB"},
+      {"name":"Desert Gnome","weight":1,"fid":"gXAZlbSEGLxR4Wwa","traits":"giNc25CMMxf6ieKI"},
+      {"name":"Redcap","weight":1,"fid":"gdgc29vvd6OO7I4t","traits":"giSmVyNe0CO1VymN"},
+      {"name":"Rock Gnome","weight":1,"fid":"gjenVzwwuuEjCIFf","traits":"gis3r3YgCi7dXsOL"}
+    ]}},
+    {"name":"Half-Elf","weight":1,"fid":"gm4GBw2ProZgZBeo","traits":"e7o4PqtC1Xb9ZioO","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fiOf1c5BArVwFxku","descriptionMale":"fiUzitn8Fxdw4bEW","imageFemale":"fo80o0OfwqPe6y3U","imageMale":"fplUldfrim38SzFR","clan":"","nameFemale":"fiaCDtdykRpVlklp","nameMale":"fjqM4ahRouFdDSTl","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Half-Orc","weight":1,"fid":"gsSbS4ZL5ftCUhDR","traits":"e8wSQf6uYfTWZxU5","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fV5eaJteRvhZ2R2W","descriptionMale":"p1hlPuP2k3apwDgm","imageFemale":"freSIQ0OVh2yiCQ5","imageMale":"fs3VvJv2djO6k73u","clan":"","nameFemale":"o71r6a0lv9kpY77I","nameMale":"o73bsJNyfluVEgxT","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Halfling","weight":1,"fid":"h1BoexW5emlDyFPE","traits":"e9fEQchgvc4xP8iy","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fVK9f96ljU8Uq0YF","descriptionMale":"p61MGu5LY2ySQpX7","imageFemale":"fsBJba2Cu2b9kemo","imageMale":"fsqCKJS7H7Cxs5ap","clan":"","nameFemale":"o8l4bhSZhZVFeiMv","nameMale":"o9J4hE5JONUcgtoR","subrace":{"table":"eXZGohRBxnAeybdH","subraces":[
+      {"name":"Burly Halfling","weight":1,"fid":"hIOWsgtTmZEgcbbz","traits":"gkF31BTj9zB8HRsL"},
+      {"name":"Fallohide Halfling","weight":1,"fid":"hGl0W7ViF3QlOadw","traits":"gl18B1952aT21tC8"},
+      {"name":"Lightfoot","weight":1,"fid":"h8oPfEPF7idPlWcn","traits":"glUiCcyGdphMK0wF"},
+      {"name":"Quarterling","weight":1,"fid":"hAXVw7xkpvmzfsX8","traits":"gleySf10JqdtMnSd"}
+    ]}},
+    {"name":"Homunculus","weight":1,"fid":"hL2VMaI4MXaaInwW","traits":"eBORja4Me8T5AYto","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fVeggYT8SQtavyOV","descriptionMale":"p6jmQhLwCRiLxd9z","imageFemale":"ftB2HGfFpNIw6M6K","imageMale":"fvrnJsZaebWvA5gZ","clan":"","nameFemale":"o9tlkHP3uTvc3ixT","nameMale":"oA6d8YRy7bm4ZniB","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Human","weight":1,"fid":"hRitd8N54Ovo5yyK","traits":"eDchGidgq88e5t9H","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"faMeRgE57NJZppaW","descriptionMale":"p9AfaX9CPPyTMgFM","imageFemale":"fwCv59Y9A7jhU5Mp","imageMale":"fz9cTJfn2Z5J4AGC","clan":"","nameFemale":"oCstcHD9beLhbcSS","nameMale":"oF51tqaBZV0F3Fdm","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Ikuisuus","weight":1,"fid":"hTlx9XgzpMyJyFwZ","traits":"eGGL8b2YP5tPOS14","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"faSrxlh6JD9UMEr1","descriptionMale":"pBnLWmUndn5KBNiC","imageFemale":"fzg2lzYwcL62tp6t","imageMale":"g0hHr6EWPeRMbsf9","clan":"","nameFemale":"oFDsptbNTPxxESrW","nameMale":"oFGFPE4A6I73ywcK","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Ishilb","weight":1,"fid":"hgCHdItRHgmlv6Wq","traits":"eGvNCwRelj0nOqW9","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fc6eAvqg2uaMfelH","descriptionMale":"pCVucTFgw1b3RXoG","imageFemale":"","imageMale":"","clan":"","nameFemale":"notcpr3XFyX5kJBH","nameMale":"nowbcjQam8of0mwd","subrace":{"table":"eXbMxZo58bNOs7Cf","subraces":[
+      {"name":"Gulilb - Hard","weight":1,"fid":"ho1ED2DA5HixqrpD","traits":"gloODe8qYjU4QO8M"},
+      {"name":"Gulilb - Spiked","weight":1,"fid":"hqSez9GtqEFE8ooN","traits":"glvC2mO7zFeIdta8"},
+      {"name":"Lishilb - Aqueous","weight":1,"fid":"huJWoaTsmRMqXIs4","traits":"gpjewqmelDJs6n0V"},
+      {"name":"Lishilb - Acidic","weight":1,"fid":"hzJz9OQHrx7N6I6l","traits":"gquft12UMBL8lVDC"}
+    ]}},
+    {"name":"Mikon","weight":1,"fid":"i20b7zLHzDc1SOU1","traits":"eHItfqsEhpggrTCb","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"fcE2ZLwCAORR8qIP","descriptionMale":"pFKHSSWLtqCbQwjK","imageFemale":"","imageMale":"","clan":"","nameFemale":"nw1zjT37xwWr5V83","nameMale":"nxhBaH3ELchCtlio","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Suva","weight":1,"fid":"i7VrttlqmsVtO5A0","traits":"eIwIrmTvumrcwyud","personality":"i7cKzGl15VIdlaWv","bond":"i8OkHSZWrEXPEQAP","ideal":"i8a6HHA0P0Uw7G5Z","flaw":"iAD3t4b6LGLD8iQ0","descriptionFemale":"fdpVgAlT36wWgmCG","descriptionMale":"phhhFZgPDuVIZwfn","imageFemale":"","imageMale":"","clan":"","nameFemale":"o4nX3vw4vw8mvfcN","nameMale":"o6U8gWuQtrh6vWxu","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Theolan","weight":1,"fid":"iJQzLTd7xDIkbgzM","traits":"eLItzwfLSGmW1RHq","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"ffiUk4pQ4OGAS5fA","descriptionMale":"pkixtzzgdxAQFsDp","imageFemale":"g144Wv6Uz09t95bn","imageMale":"g1lohDToLFFmWTrD","clan":"","nameFemale":"oLTWcOy2UZlXQcyq","nameMale":"oM1c3JftKCXDmF0m","subrace":{"table":"","subraces":[
+    ]}},
+    {"name":"Tiefling","weight":1,"fid":"iQ0uFxP8TmqQJgqI","traits":"eUE9CLJ4xrLbA3It","personality":"","bond":"","ideal":"","flaw":"","descriptionFemale":"ffzZOw7NIkAro1sY","descriptionMale":"q0ZDUO4vlAhV2eRA","imageFemale":"g2uEmbNkMPunf3WJ","imageMale":"g2x0fpevnNVmDpEg","clan":"","nameFemale":"nsfZ1vJOkq8GBoZw","nameMale":"nvWbbQEa5sy0huYS","subrace":{"table":"","subraces":[
+    ]}}
+  ]}
+}

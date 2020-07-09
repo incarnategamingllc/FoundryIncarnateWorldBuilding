@@ -2,11 +2,11 @@
 	"name": "incarnateWorldBuilding",
 	"title": "Incarnate World Building",
 	"description": "Assists in world building and responding to unexpected player decisions",
-	"version": "0.1.504",
+	"version": "0.1.505",
 	"author": "Philip aka ProNobis",
     "manifest": "https://raw.githubusercontent.com/IncarnateGaming/incarnateWorldBuilding/master/module.json",
     "url": "https://github.com/IncarnateGaming/incarnateWorldBuilding",
-	"minimumCoreVersion": "0.5.5",
+	"minimumCoreVersion": "0.6.5",
    	"download": "https://github.com/IncarnateGaming/incarnateWorldBuilding/archive/7ea26b4fe4844897d2f410d105357ef2ba15dcc2.zip",
   	"scripts": [
 		"./js/IncarnateGamingLLC.js",
