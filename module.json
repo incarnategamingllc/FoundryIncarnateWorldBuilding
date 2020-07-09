@@ -4,7 +4,7 @@
 	"description": "Assists in world building and responding to unexpected player decisions",
 	"version": "0.1.505",
 	"author": "Philip aka ProNobis",
-    "manifest": "https://raw.githubusercontent.com/IncarnateGaming/incarnateWorldBuilding/master/module.json",
+    "manifest": "https://raw.githubusercontent.com/incarnategamingllc/FoundryIncarnateWorldBuilding/master/module.json",
     "url": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding",
 	"minimumCoreVersion": "0.6.5",
    	"download": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding/archive/6686431ea02b9dbf667333b3ec66fc16718a977f.zip",
