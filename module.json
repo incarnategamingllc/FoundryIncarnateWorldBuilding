@@ -5,9 +5,9 @@
 	"version": "0.1.505",
 	"author": "Philip aka ProNobis",
     "manifest": "https://raw.githubusercontent.com/IncarnateGaming/incarnateWorldBuilding/master/module.json",
-    "url": "https://github.com/IncarnateGaming/incarnateWorldBuilding",
+    "url": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding",
 	"minimumCoreVersion": "0.6.5",
-   	"download": "https://github.com/IncarnateGaming/incarnateWorldBuilding/archive/7ea26b4fe4844897d2f410d105357ef2ba15dcc2.zip",
+   	"download": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding/archive/904c64d22bd9745b35cd6130dbd7ee387bf79d7b.zip",
   	"scripts": [
 		"./js/IncarnateGamingLLC.js",
       	"./js/Hooks/HyperlinkHelper.js",
