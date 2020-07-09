@@ -110,6 +110,11 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends Application {
         game.settings.set("incarnateWorldBuilding","incRegions",settings);
     }
 
+    static mainTabCallback(nullElement, tabsV2, newTabName){
+    }
+
+    static dungeonTabCallback(nullElement, tabsV2, newTabName){
+    }
     /**
      * Add some event listeners to the UI to provide interactivity
      */
@@ -173,18 +178,15 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends Application {
         [].forEach.call(resetMapSettings, add=>{
             add.addEventListener("click",handlerResetMapSettings);
         });
+        
         //listener to make main tabs work
-        let nav = $('.tabs[data-group="incarnateGMblindGroup"]');
-        new Tabs(nav, {
-            initial: "tab1",
-            callback: t => console.log(`Tab ${JSON.stringify(t)} was clicked`)
-        });
+        const mainTabs = new TabsV2({navSelector: ".tabs", contentSelector: ".content", initial: "tab1", callback: IncarnateGamingLLC.GMsScreen.mainTabCallback});
+        mainTabs.bind(htmlDom);
+
         //listener to make scene tabs work
-        let nav2 = $('.tabs[data-group="incarnateGMblindScenes"]');
-        new Tabs(nav2, {
-            initial: "tab1",
-            callback: t => console.log(`Tab ${JSON.stringify(t)} was clicked`)
-        });
+        const dungeonTabs = new TabsV2({navSelector: ".dungeonTabs", contentSelector: ".dungeonTabContent", initial: "tab1", callback: IncarnateGamingLLC.GMsScreen.dungeonTabCallback});
+        dungeonTabs.bind(htmlDom);
+
         //listener to make Insert Template work
         let insertTemplate = htmlDom.getElementsByClassName("insertTemplateButton");
         [].forEach.call(insertTemplate, button => {
