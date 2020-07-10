@@ -1,8 +1,7 @@
 // Hooks.on("preCreateChatMessage", (chatFunction,chatMessage) =>{
 Hooks.on("preCreateChatMessage", (messageInformation, renderingSheet) =>{
-    console.log("triggered preChreateChatMessage",messageInformation, renderingSheet);
     let chatMessage = messageInformation.content;
-    if (chatMessage === undefined)return;
+    if (chatMessage === undefined || chatMessage.match(/^\?/) === null) return true;
     if (chatMessage.match(/^\?help/) !== null){
         messageInformation.content = `<div><strong>Public Commands:</strong> ?statRoll ?statAuditMe ?statAudit </div><div><strong>GM Commands:</strong> ?gmscreen</div><div>See ${IncarnateGamingLLC.PLAYER_QUICK_SHEET} for more details</div>`;
         return true;
