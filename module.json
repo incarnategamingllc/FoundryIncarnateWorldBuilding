@@ -33,7 +33,7 @@
 		"./js/AutoKill.js",
 		"./js/Calendar.js",
 		"./js/DialogChange.js",
-		"./js/GmsScreen.js",
+		"./js/GMsScreen.js",
 		"./js/JournalEntry.js",
 		"./js/Settings.js",
 		"./js/QuestEditor.js",
