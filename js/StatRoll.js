@@ -5,7 +5,7 @@
 IncarnateGamingLLC.StatRoll = class StatRoll{
     //conversion script added on 9/13/2019 to add support for regional stat roll settings in older data sets
     static addToFolder(folder){
-        var flags = JSON.parse(JSON.stringify(folder.data.flags));
+        var flags = IncarnateGamingLLC.deepCopy(folder.data.flags);
         var found = false;
         if (folder.data.parent !== null){
             const parentFolder = game.folders.get(folder.data.parent);
@@ -24,7 +24,7 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
     }
     static playerStatRoll(userId){
         const user = game.users.get(userId);
-        const flags = JSON.parse(JSON.stringify(user.data.flags));
+        const flags = IncarnateGamingLLC.deepCopy(user.data.flags);
         if (flags.statRolls === undefined){
             flags.statRolls = [];
         }
@@ -33,7 +33,7 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
         flags.statRolls.push({
             statRoll:statRoll,
             date: Date.now(),
-            gameDay:Calendar.incarnateDate(),
+            gameDay:IncarnateGamingLLC.Calendar.incarnateDate(),
             settings:settings
         });
         user.update({flags:flags});
@@ -49,7 +49,7 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
         var message ="<h3>" + userName + "</h3>";
         if (flags.statRolls !== undefined){
             flags.statRolls.forEach(roll =>{
-                message+= "<p><strong>" + new Date(roll.date).toDateString() + "</strong> " + Calendar.toDateString(roll.gameDay) + "</p><p>" + JSON.stringify(roll.statRoll) + "</p>";
+                message+= "<p><strong>" + new Date(roll.date).toDateString() + "</strong> " + IncarnateGamingLLC.Calendar.toDateString(roll.gameDay) + "</p><p>" + JSON.stringify(roll.statRoll) + "</p>";
             })
         }
         return message;
@@ -64,7 +64,7 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
         var message ="<h3>" + userName + "</h3>";
         if (flags.statRolls !== undefined){
             flags.statRolls.forEach(roll =>{
-                message+= "<p><strong>" + new Date(roll.date).toDateString() + "</strong> " + Calendar.toDateString(roll.gameDay) + "</p><p>" + JSON.stringify(roll.statRoll) + "</p>" + "<p><strong>Dice:</strong> " + JSON.stringify(roll.settings.dice) + "</p><p><strong>Guarantees</strong></p><p>" + JSON.stringify(roll.settings.guarantee) + "</p>";
+                message+= "<p><strong>" + new Date(roll.date).toDateString() + "</strong> " + IncarnateGamingLLC.Calendar.toDateString(roll.gameDay) + "</p><p>" + JSON.stringify(roll.statRoll) + "</p>" + "<p><strong>Dice:</strong> " + JSON.stringify(roll.settings.dice) + "</p><p><strong>Guarantees</strong></p><p>" + JSON.stringify(roll.settings.guarantee) + "</p>";
             })
         }
         return message;
@@ -81,9 +81,9 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
             rolledArray = Roll.simulate(dice,rolls);
             abortCount++;
             if (Number(dice.substr(0,1) > 0)){
-                rollCount += (rolls * Number(dice.substr(0,1)));
+                IncarnateGamingLLC.rollCount += (rolls * Number(dice.substr(0,1)));
             }else{
-                rollCount += (rolls*3);
+                IncarnateGamingLLC.rollCount += (rolls*3);
             }
             if (guarantee !== undefined){
                 if (guarantee.max === undefined) guarantee.max = 10000;

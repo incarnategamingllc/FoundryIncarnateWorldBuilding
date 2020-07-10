@@ -28,4 +28,6 @@ class IncarnateGamingLLC{
     static delay(ms){
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+
+    static PLAYER_QUICK_SHEET = '<span class="crossReference" data-fid="g7NQ9CEj2AiLpxXs" data-type="JournalEntry" data-parent="HlyV9728fyQUUdDx" data-pack="world.incarnateRules">Player Quick Sheet</span>';
 }
