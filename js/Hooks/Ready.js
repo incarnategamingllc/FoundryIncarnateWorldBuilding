@@ -27,12 +27,12 @@ Hooks.on('ready', async () =>  {
     Application.prototype._render = IncarnateApplicationRender;
     //Changes Note double left to different script
     const IncarnateNoteDoubleLeft = (function () {
-        var cached_function = Note.prototype._onDoubleLeft;
+        var cached_function = Note.prototype._onClickLeft2;
         return function(ev){
             const advance = Hooks.call("incarnateNoteDoubleLeft",ev,this);
             if (advance === false) return false;
             return cached_function.apply(this,arguments);
         }
     })();
-    Note.prototype._onDoubleLeft = IncarnateNoteDoubleLeft;
+    Note.prototype._onClickLeft2 = IncarnateNoteDoubleLeft;
 });
