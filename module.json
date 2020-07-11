@@ -7,7 +7,7 @@
     "manifest": "https://raw.githubusercontent.com/incarnategamingllc/FoundryIncarnateWorldBuilding/master/module.json",
     "url": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding",
 	"minimumCoreVersion": "0.6.5",
-   	"download": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding/archive/f45bd3d38cf8bb002b83953e8fadcf278aee68d0 .zip",
+   	"download": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding/archive/c2ca31c60387b3bf54ac82491b14ae0ec3858acf.zip",
   	"scripts": [
 		"./js/IncarnateGamingLLC.js",
       	"./js/Hooks/HyperlinkHelper.js",
