@@ -2,7 +2,7 @@
 	"name": "incarnateWorldBuilding",
 	"title": "Incarnate World Building",
 	"description": "Assists in world building and responding to unexpected player decisions",
-	"version": "0.1.507",
+	"version": "0.1.508",
 	"author": "Philip aka ProNobis",
     "manifest": "https://raw.githubusercontent.com/incarnategamingllc/FoundryIncarnateWorldBuilding/master/module.json",
     "url": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding",

@@ -13,11 +13,11 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
     static addFlags(htmlDom,data){
         var flags = data.entity.flags;
         if (flags === undefined){
-            flags = SceneGen.defaultArray();
+            flags = IncarnateGamingLLC.SceneGen.defaultArray();
         }
         var dungeon = flags.dungeon;
         if (dungeon === undefined){
-            dungeon = SceneGen.defaultArray().dungeon;
+            dungeon = IncarnateGamingLLC.SceneGen.defaultArray().dungeon;
         }
         const nav = htmlDom.getElementsByTagName("nav")[0];
         nav.innerHTML += this.newNav("Incarnate Scene Flags",'<i class="fas fa-flag"></i>').outerHTML;
@@ -67,7 +67,7 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
         var pastHeader = false;
         const newForm = document.createElement("form");
         newForm.setAttribute("autocomplete",form.getAttribute("autocomplete"));
-        const tabs = document.createElement("div");
+        const tabs = document.createElement("section");
         const nav = document.createElement("nav");
         const buttons = form.getElementsByTagName("button");
         const button = buttons[buttons.length -1];
@@ -75,34 +75,36 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
         button.remove();
         nav.setAttribute("class","tabs");
         nav.setAttribute("data-group","sceneTabs");
-        var currentTab = "";
-        [].forEach.call(children, child =>{
+        let currentTab = "";
+        Array.from(children).forEach((child)=>{
+        // [].forEach.call(children, child =>{
             if (pastHeader === false){
                 if (child.tagName === "H3"){
-                    pastHeader = true
+                    pastHeader = true;
                     var sanName = IncarnateGamingLLC.Reference.sanitizeName(child.textContent);
-                    nav.innerHTML += this.newNav(sanName,child.firstChild.outerHTML).outerHTML;
+                    nav.append(this.newNav(sanName,child.firstChild.outerHTML));
                     currentTab = this.newTab(sanName);
                 }else{
-                    newForm.innerHTML += child.outerHTML;
+                    newForm.appendChild(child);
                 }
             }else{
                 if (child.tagName === "H3"){
-                    tabs.innerHTML += currentTab.outerHTML;
+                    tabs.append(currentTab);
                     var sanName = IncarnateGamingLLC.Reference.sanitizeName(child.textContent);
-                    nav.innerHTML += this.newNav(sanName,child.firstChild.outerHTML).outerHTML;
+                    nav.append(this.newNav(sanName,child.firstChild.outerHTML));
                     currentTab = this.newTab(sanName);
                 }else{
-                    currentTab.innerHTML += child.outerHTML;
+                    currentTab.appendChild(child);
                 }
             }
         });
         tabs.append(currentTab);
         //form = newForm;
-        form.innerHTML = newForm.innerHTML;
-        form.innerHTML += nav.outerHTML;
-        form.innerHTML += tabs.innerHTML;
-        form.innerHTML += submitButton;
+        form.innerHTML = '';
+        form.append(newForm);
+        form.append(nav);
+        form.append(tabs);
+        form.append(IncarnateGamingLLC.createElementFromHTML(submitButton));
         return htmlDom;
     }
     static newTab(sanName){
