@@ -4,6 +4,24 @@
  * @type {IncarnateGamingLLC.Calendar}
  */
 IncarnateGamingLLC.Calendar = class Calendar{
+    static defaultCalendar = {
+        "date":{
+            "y":1,
+            "m":1,
+            "d":1,
+            "h":0,
+            "i":0,
+            "s":0
+        },
+        "maxes":{
+            "m":12,
+            "d":30,
+            "h":23,
+            "i":59,
+            "s":59
+        },
+        "monthNames":["Zota","Maco","Nita","Ridon","Dankil","Maso","Drite","Fami","Notrae","Tali","Alo","Sadil"]
+    }
     /**
      * Calendar Prep
      */
@@ -15,6 +33,7 @@ IncarnateGamingLLC.Calendar = class Calendar{
             type: Object,
             scope: 'world',
             onChange: settings => {
+                IncarnateGamingLLC.Calendar.updateDisplayedDates();
                 console.log(settings);
             }
         });
@@ -22,26 +41,8 @@ IncarnateGamingLLC.Calendar = class Calendar{
             return(game.settings.get("incarnate","incCalendar"));
         }else {
             console.log("Creating Calendar Settings");
-            var tempCalendar = {
-                "date":{
-                    "y":1,
-                    "m":1,
-                    "d":1,
-                    "h":0,
-                    "i":0,
-                    "s":0
-                },
-                "maxes":{
-                    "m":12,
-                    "d":30,
-                    "h":23,
-                    "i":59,
-                    "s":59
-                },
-                "monthNames":["Zota","Maco","Nita","Ridon","Dankil","Maso","Drite","Fami","Notrae","Tali","Alo","Sadil"]
-            }
-            game.settings.set("incarnate","incCalendar",tempCalendar);
-            return(tempCalendar);
+            game.settings.set("incarnate","incCalendar", IncarnateGamingLLC.Calendar.defaultCalendar);
+            return(IncarnateGamingLLC.Calendar.defaultCalendar);
         }
     }
     static yearChange(delta,calendar){
@@ -135,6 +136,18 @@ IncarnateGamingLLC.Calendar = class Calendar{
         }else{
             game.settings.set("incarnate","incCalendar",calendar);
         }
+    }
+    static updateDisplayedDates(){
+        let dateElements = document.getElementsByClassName('incarnate-calendar-date');
+        let timeElements = document.getElementsByClassName('incarnate-calendar-time');
+        let calendar = game.settings.get("incarnate","incCalendar");
+        console.log('calendar', calendar);
+        [].forEach.call(dateElements, dateElement=>{
+            dateElement.innerHTML = `${calendar.monthNames[calendar.date.m]} ${calendar.date.d}, ${calendar.date.y}`;
+        });
+        [].forEach.call(timeElements, timeElement=>{
+            timeElement.innerHTML = `${calendar.date.h}:${calendar.date.i < 10 ? '0' + calendar.date.i : calendar.date.i}`;
+        });
     }
     static incarnateDate(){
         var calendar = game.settings.get("incarnate","incCalendar");

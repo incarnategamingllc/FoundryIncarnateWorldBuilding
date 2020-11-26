@@ -82,12 +82,6 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends Application {
                     tempName = tempName.replace(/ ?\-? ?<span class="generate".*<\/span> ?\-? ?/,"")
                 }
                 tempName= IncarnateGamingLLC.Reference.sanitizeName(tempName);
-                /*
-                if (tempName.search(/<h1>.*<\/h1>/) !=-1){
-                    tempName = tempName.replace(/<h1>/,"");
-                    tempName = tempName.replace(/<\/h1>/,"");
-                }
-                */
                 option.text=tempName;
                 option.value= incarnateTemplates[a]._id + "__" + tempName;
                 select.appendChild(option);

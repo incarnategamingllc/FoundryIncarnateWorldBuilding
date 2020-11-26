@@ -1,4 +1,4 @@
-Hooks.on('ready', async () =>  {
+Hooks.on('ready', () =>  {
     if (game.settings.get("incarnateWorldBuilding","anvilButtons")){
         var anvil = document.getElementById("logo")
         if ( game.user.isGM ) {
@@ -12,6 +12,7 @@ Hooks.on('ready', async () =>  {
     IncarnateGamingLLC.StatRoll.incarnateSetupDefaults();
     IncarnateGamingLLC.SceneGen.incarnateSetupDefaults();
     IncarnateGamingLLC.WindowMemory.incarnateSetupDefaults();
+    IncarnateGamingLLC.ImportTables.import();
     //Adds a preRender hook to applications
     const IncarnateApplicationRender = (function () {
         var cached_function = Application.prototype._render;

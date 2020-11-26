@@ -28,18 +28,20 @@
 			</div>
 		</div>
 		<div id="referenceCalendar" class="tab incarnateCalendar flex" data-tab="tab2" data-group="incarnateGMblindGroup">
-			<h1>{{month}} {{referenceCalendar.date.d}}, {{referenceCalendar.date.y}}</h1>
-			<p>{{referenceCalendar.date.h}}:{{referenceCalendar.date.i}}</p>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.hourChange(1)">Short Rest</button>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.hourChange(8)">Long Rest</button>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.dayChange(1)">Day</button>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.dayChange(7)">Week</button>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.monthChange(1)">Month</button>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.monthChange(3)">Season</button>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.yearChange(1)">Year</button>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.yearChange(10)">Decade</button>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.yearChange(100)">Century</button>
-			<button type="button" onclick="IncarnateGamingLLC.Calendar.yearChange(1000)">Millenia</button>
+			<h1 class="incarnate-calendar-date">{{month}} {{referenceCalendar.date.d}}, {{referenceCalendar.date.y}}</h1>
+			<p class="incarnate-calendar-time">{{referenceCalendar.date.h}}:{{referenceCalendar.date.i}}</p>
+			<div class="calendar-buttons">
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.hourChange(1)">Short Rest</button>
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.hourChange(8)">Long Rest</button>
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.dayChange(1)">Day</button>
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.dayChange(7)">Week</button>
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.monthChange(1)">Month</button>
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.monthChange(3)">Season</button>
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.yearChange(1)">Year</button>
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.yearChange(10)">Decade</button>
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.yearChange(100)">Century</button>
+				<button type="button" onclick="IncarnateGamingLLC.Calendar.yearChange(1000)">Millenia</button>
+			</div>
 		</div>
 		<div class="tab incarnateMapGenerator flex" data-tab="tab3" data-group="incarnateGMblindGroup">
 			<div class="heading section">

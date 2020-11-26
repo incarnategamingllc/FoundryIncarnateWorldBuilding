@@ -7,7 +7,7 @@ IncarnateGamingLLC.DataImport = class DataImport {
                     resolve(this.responseXML);
                 }
             };
-            ugf.open("GET", "modules/incarnateWorldBuilding/packs/Incarnate-System.xml", true);
+            ugf.open("GET", "modules/incarnateWorldBuilding/js/Imports/Incarnate-System.xml", true);
             ugf.send();
         })
     }
