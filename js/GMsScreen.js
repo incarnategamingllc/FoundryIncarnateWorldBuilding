@@ -8,7 +8,7 @@ IncarnateGamingLLC.openGmScreen = function() {
  * Creates a GMsScreen to assist in accessing custom Incarnate functions
  * @type {IncarnateGamingLLC.GMsScreen}
  */
-IncarnateGamingLLC.GMsScreen = class GMsScreen extends Application {
+IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
 
     /**
      * Define default options for the PartySummary application

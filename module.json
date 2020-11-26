@@ -1,14 +1,24 @@
 {
-	"name": "incarnateWorldBuilding",
-	"title": "Incarnate World Building",
-	"description": "Assists in world building and responding to unexpected player decisions",
-	"minimumCoreVersion": "0.7.7",
-	"compatibleCoreVersion": "0.7.7",
-	"version": "0.1.509",
 	"author": "Philip aka ProNobis",
-    "manifest": "https://raw.githubusercontent.com/incarnategamingllc/FoundryIncarnateWorldBuilding/master/module.json",
-    "url": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding",
-   	"download": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding/archive/c2ca31c60387b3bf54ac82491b14ae0ec3858acf.zip",
+  	"bugs": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding/issues",
+  	"changelog": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding/commits/master",
+	"compatibleCoreVersion": "0.7.7",
+	"description": "Assists in world building and responding to unexpected player decisions",
+	"download": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding/archive/c2ca31c60387b3bf54ac82491b14ae0ec3858acf.zip",
+	"license": "https://raw.githubusercontent.com/incarnategamingllc/FoundryIncarnateWorldBuilding/master/LICENSE.txt",
+	"manifest": "https://raw.githubusercontent.com/incarnategamingllc/FoundryIncarnateWorldBuilding/master/module.json",
+	"minimumCoreVersion": "0.7.7",
+	"name": "incarnateWorldBuilding",
+	"readme": "https://raw.githubusercontent.com/incarnategamingllc/FoundryIncarnateWorldBuilding/master/README.md",
+	"title": "Incarnate World Building",
+	"version": "0.1.509",
+	"url": "https://github.com/incarnategamingllc/FoundryIncarnateWorldBuilding",
+  	"dependencies": [
+		{
+			"name": "incarnateAssets",
+          	"manifest": "https://raw.githubusercontent.com/incarnategamingllc/FoundryIncarnateAssets/master/module.json"
+		}
+	],
   	"scripts": [
 		"./js/IncarnateGamingLLC.js",
       	"./js/Hooks/HyperlinkHelper.js",
