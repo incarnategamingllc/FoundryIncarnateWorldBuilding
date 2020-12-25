@@ -4,7 +4,7 @@
  */
 IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGamingLLC.SceneGen{
     static async newDungeon(name,width,height){
-        const settings = game.settings.get("incarnate","incSceneGenSettings");
+        const settings = game.settings.get("incarnateWorldBuilding","incSceneGenSettings");
         let scene = await IncarnateGamingLLC.DungeonGenerator.createScene(name, width, height, settings);
         const newDungeon = await IncarnateGamingLLC.DungeonGenerator.dungeonGeneration(scene, settings.dungeon.rooms, settings.dungeon.roomMinL, settings.dungeon.roomMaxL, settings.dungeon.hallWidth);
         const dungeonWalls = await IncarnateGamingLLC.DungeonGenerator.dungeonWalls(newDungeon.drawings);
@@ -33,14 +33,14 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
             }else{
                 name = "Dungeon " + settings.sceneCount;
                 settings.sceneCount++;
-                game.settings.set("incarnate","incSceneGenSettings",settings);
+                game.settings.set("incarnateWorldBuilding","incSceneGenSettings",settings);
             }
         }
         const journalEntry = await IncarnateGamingLLC.SceneGen.newJournalEntry(name);
         return await CONFIG.Scene.entityClass.create({name:name,flags:{dungeon:settings.dungeon},width:width,height:height, journal:journalEntry._id});
     }
     static async dungeonGeneration(scene,rooms,roomMinL,roomMaxL,hallWidth,breakAfter){
-        const settings = game.settings.get("incarnate","incSceneGenSettings");
+        const settings = game.settings.get("incarnateWorldBuilding","incSceneGenSettings");
         scene = scene || game.scenes.active;
         rooms = Number(rooms) || 5;
         const sceneGrid = Number(scene.data.grid);
@@ -259,7 +259,7 @@ IncarnateGamingLLC.DungeonGenerator = class DungeonGenerator extends IncarnateGa
         return ({drawings:drawings});
     }
     static dungeonWalls(drawings){
-        const settings = game.settings.get("incarnate","incSceneGenSettings");
+        const settings = game.settings.get("incarnateWorldBuilding","incSceneGenSettings");
         let walls = [];
         const rooms = drawings.filter(drawing => drawing.flags.type ==="room");
         const halls = drawings.filter(drawing => drawing.flags.type ==="hall");

@@ -13,19 +13,19 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
             onChange: settings => {
             }
         });
-        if( game.settings.get("incarnate","incSceneGenSettings") !=""){
-            return(game.settings.get("incarnate","incSceneGenSettings"));
+        if( game.settings.get("incarnateWorldBuilding","incSceneGenSettings") !==""){
+            return(game.settings.get("incarnateWorldBuilding","incSceneGenSettings"));
         }else {
             console.log("Creating Scene Generate Settings");
             var tempSceneSet = SceneGen.defaultArray();
-            game.settings.set("incarnate","incSceneGenSettings",tempSceneSet);
+            game.settings.set("incarnateWorldBuilding","incSceneGenSettings",tempSceneSet);
             return(tempSceneSet);
         }
     }
-    static resetDefault(){
+    static async resetDefault(){
         console.log("Creating Scene Generate Settings");
-        var tempSceneSet = SceneGen.defaultArray();
-        game.settings.set("incarnate","incSceneGenSettings",tempSceneSet);
+        let tempSceneSet = SceneGen.defaultArray();
+        await game.settings.set("incarnateWorldBuilding","incSceneGenSettings",tempSceneSet);
         return(tempSceneSet);
     }
     static defaultArray(){
@@ -42,14 +42,6 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
                 trunkSize:33
             },
             sceneCount:1,
-            polygon:{
-                minA:20,
-                maxA:70,
-                minL:10,
-                maxL:50,
-                x:300,
-                y:300
-            },
             dungeon:{
                 breakAfter:50,
                 hallWidth:2,
@@ -195,27 +187,27 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
         var walls=[];
         var wallId = startId + 1;
         var tempWall = [x,y,x+width,y];
-        var colisionCycle = SceneGen.wallColisionCycleHall(tempWall,colisionDrawingsSkip,normalType,wallId,"top");
-        walls = walls.concat(colisionCycle.walls);
-        wallId = colisionCycle.id;
+        let collisionCycle = SceneGen.wallColisionCycleHall(tempWall,colisionDrawingsSkip,normalType,wallId,"top");
+        walls = walls.concat(collisionCycle.walls);
+        wallId = collisionCycle.id;
         tempWall = [x,y,x,y+height];
-        var colisionCycle = SceneGen.wallColisionCycleHall(tempWall,colisionDrawingsSkip,normalType,wallId,"left");
-        walls = walls.concat(colisionCycle.walls);
-        wallId = colisionCycle.id;
+        collisionCycle = SceneGen.wallColisionCycleHall(tempWall,colisionDrawingsSkip,normalType,wallId,"left");
+        walls = walls.concat(collisionCycle.walls);
+        wallId = collisionCycle.id;
         tempWall = [x+width,y,x+width,y+height];
-        var colisionCycle = SceneGen.wallColisionCycleHall(tempWall,colisionDrawingsSkip,normalType,wallId,"right");
-        walls = walls.concat(colisionCycle.walls);
-        wallId = colisionCycle.id;
+        collisionCycle = SceneGen.wallColisionCycleHall(tempWall,colisionDrawingsSkip,normalType,wallId,"right");
+        walls = walls.concat(collisionCycle.walls);
+        wallId = collisionCycle.id;
         tempWall = [x,y+height,x+width,y+height];
-        var colisionCycle = SceneGen.wallColisionCycleHall(tempWall,colisionDrawingsSkip,normalType,wallId,"bottom");
-        walls = walls.concat(colisionCycle.walls);
-        wallId = colisionCycle.id;
+        collisionCycle = SceneGen.wallColisionCycleHall(tempWall,colisionDrawingsSkip,normalType,wallId,"bottom");
+        walls = walls.concat(collisionCycle.walls);
+        wallId = collisionCycle.id;
         return {walls:walls,id:wallId};
     }
     static wallColisionCycleHall(tempWall,colisionDrawingsSkip,normalType,wallId,position){
         var walls = [];
-        var colisions = SceneGen.wallColision(tempWall,[],colisionDrawingsSkip);
-        if (colisions.primary.length === 0 && colisions.secondary.length <= 1){
+        var collision = SceneGen.wallCollision(tempWall,[],colisionDrawingsSkip);
+        if (collision.primary.length === 0 && collision.secondary.length <= 1){
             var newWall = JSON.parse(JSON.stringify(normalType));
             newWall.c = tempWall;
             newWall.id = wallId;
@@ -223,7 +215,7 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
             wallId++;
             walls.push(newWall);
         }else{
-            var postSkips = SceneGen.wallColisionSkip(tempWall,colisions.secondary,position);
+            var postSkips = SceneGen.wallCollisionSkip(tempWall,collision.secondary,position);
             postSkips.forEach(post => {
                 var newWall = JSON.parse(JSON.stringify(normalType));
                 newWall.c = post;
@@ -237,8 +229,8 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
     }
     static wallColisionCycle(tempWall,colisionDrawings,colisionDrawingsSkip,normalType,colisionType,wallId,position){
         var walls = [];
-        var colisions = SceneGen.wallColision(tempWall,colisionDrawings,colisionDrawingsSkip,position);
-        if (colisions.primary.length === 0 && colisions.secondary.length <= 1){
+        var collision = SceneGen.wallCollision(tempWall,colisionDrawings,colisionDrawingsSkip,position);
+        if (collision.primary.length === 0 && collision.secondary.length <= 1){
             var newWall = JSON.parse(JSON.stringify(normalType));
             newWall.c = tempWall;
             newWall.id = wallId;
@@ -246,16 +238,16 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
             wallId++;
             walls.push(newWall);
         }else{
-            var postSkips = SceneGen.wallColisionSkip(tempWall,colisions.secondary,position);
+            var postSkips = SceneGen.wallCollisionSkip(tempWall,collision.secondary,position);
             postSkips.forEach(post => {
-                var colisionTran = SceneGen.wallColisionTransform(post,colisions.primary,wallId,normalType,colisionType,position);
-                walls = walls.concat(colisionTran.walls);
-                wallId =colisionTran.id;
+                var collisionTran = SceneGen.wallCollisionTransform(post,collision.primary,wallId,normalType,colisionType,position);
+                walls = walls.concat(collisionTran.walls);
+                wallId =collisionTran.id;
             });
         }
         return {walls:walls,id:wallId};
     }
-    static wallColisionTransform([x1,y1,x2,y2],colisions,wallId,normalType,colisionType,position){
+    static wallCollisionTransform([x1,y1,x2,y2], colisions, wallId, normalType, colisionType, position){
         normalType = normalType || IncarnateGamingLLC.SceneGen.defaultWall();
         colisionType = colisionType || {door:1,flags:{},move:1,sense:1,ds:0};
         var newWall;
@@ -309,16 +301,16 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
             var xCurrent = x1 < x2 ? x1 : x2;
             var xEnd = x1 > x2 ? x1 : x2;
             colisions.sort((a,b) => a.left - b.left);
-            colisions.forEach(colision =>{
-                if (colision.left > xCurrent && colision.left <= xEnd && xCurrent !== colision.left){
+            colisions.forEach(collision =>{
+                if (collision.left > xCurrent && collision.left <= xEnd && xCurrent !== collision.left){
                     newWall = JSON.parse(JSON.stringify(normalType));
-                    newWall.c = [xCurrent,y1,colision.left,y1];
+                    newWall.c = [xCurrent,y1,collision.left,y1];
                     newWall.id = wallId;
                     newWall.flags.loc = position;
                     wallId++;
                     walls.push(newWall);
-                    xCurrent = colision.left;
-                }else if (colision.left > xEnd && xCurrent !== xEnd){
+                    xCurrent = collision.left;
+                }else if (collision.left > xEnd && xCurrent !== xEnd){
                     newWall = JSON.parse(JSON.stringify(normalType));
                     newWall.c = [xCurrent,y1,xEnd,y1];
                     newWall.id = wallId;
@@ -327,11 +319,11 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
                     walls.push(newWall);
                     xCurrent = xEnd;
                 }
-                if ((position ==="top" && colision.top ===y1)||(position==="bottom" && colision.bottom === y1)){
+                if ((position ==="top" && collision.top ===y1)||(position==="bottom" && collision.bottom === y1)){
                 }else{
                     newWall = JSON.parse(JSON.stringify(colisionType));
-                    var xTemp = colision.right >= xEnd ? xEnd :
-                        colision.right > xCurrent? colision.right : xCurrent;
+                    var xTemp = collision.right >= xEnd ? xEnd :
+                        collision.right > xCurrent? collision.right : xCurrent;
                     if (xTemp !== xCurrent){
                         newWall.c = [xCurrent,y1,xTemp,y1];
                         newWall.id = wallId;
@@ -354,7 +346,7 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
         }
         return {walls:walls,id:wallId};
     }
-    static wallColisionSkip([x1,y1,x2,y2],colisions,position){
+    static wallCollisionSkip([x1,y1,x2,y2], colisions, position){
         var a = [], encompassSelf = false, skipPart = false;
         if (colisions.length === 1){
             a.push([x1,y1,x2,y2]);
@@ -425,7 +417,7 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
         }
         return a;
     }
-    static wallColision ([x1,y1,x2,y2],colisionPrimary,colisionSecondary){
+    static wallCollision ([x1,y1,x2,y2], colisionPrimary, colisionSecondary){
         const top = y1 < y2 ? y1 : y2;
         const bottom = y1 > y2 ? y1 : y2;
         const left = x1 < x2 ? x1 : x2;
@@ -565,13 +557,7 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
     }
     static parseDrawingLocation(drawing){
         const result = {};
-        if (drawing.type === "e" || drawing.type ==="r"){
-            result.top = Number(drawing.height) > 0 ? Number(drawing.y) : Number(drawing.y) + Number(drawing.height);
-            result.left = Number(drawing.width) > 0 ? Number(drawing.x) : Number(drawing.width) + Number(drawing.x);
-            result.bottom = Number(drawing.height) > 0 ? Number(drawing.y) + Number(drawing.height) : Number (drawing.y);
-            result.right = Number(drawing.width) > 0 ? Number(drawing.x) + Number(drawing.width) : Number(drawing.x);
-            result.center = [Number(result.left) + (Number(result.right)-Number(result.left))/2,Number(result.top) + (Number(result.right)-Number(result.left))/2];
-        }else if (drawing.type === "p" || drawing.type ==="f"){
+        if (drawing.type === "e" || drawing.type ==="r" || drawing.type === "p" || drawing.type === "f"){
             result.top = Number(drawing.height) > 0 ? Number(drawing.y) : Number(drawing.y) + Number(drawing.height);
             result.left = Number(drawing.width) > 0 ? Number(drawing.x) : Number(drawing.width) + Number(drawing.x);
             result.bottom = Number(drawing.height) > 0 ? Number(drawing.y) + Number(drawing.height) : Number (drawing.y);
@@ -579,7 +565,7 @@ IncarnateGamingLLC.SceneGen = class SceneGen{
             result.center = [Number(result.left) + (Number(result.right)-Number(result.left))/2,Number(result.top) + (Number(result.right)-Number(result.left))/2];
         }else{
             console.log("Cannot parse drawings of type: ",drawing.type);
-            return(false);
+            return false;
         }
         return result;
     }

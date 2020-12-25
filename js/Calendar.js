@@ -37,24 +37,24 @@ IncarnateGamingLLC.Calendar = class Calendar{
                 console.log(settings);
             }
         });
-        if( game.settings.get("incarnate","incCalendar") !=""){
-            return(game.settings.get("incarnate","incCalendar"));
+        if( game.settings.get("incarnateWorldBuilding","incCalendar") !=""){
+            return(game.settings.get("incarnateWorldBuilding","incCalendar"));
         }else {
             console.log("Creating Calendar Settings");
-            game.settings.set("incarnate","incCalendar", IncarnateGamingLLC.Calendar.defaultCalendar);
+            game.settings.set("incarnateWorldBuilding","incCalendar", IncarnateGamingLLC.Calendar.defaultCalendar);
             return(IncarnateGamingLLC.Calendar.defaultCalendar);
         }
     }
     static yearChange(delta,calendar){
         if (calendar === undefined){
-            calendar = game.settings.get("incarnate","incCalendar");
+            calendar = game.settings.get("incarnateWorldBuilding","incCalendar");
         }
         calendar.date.y = calendar.date.y+delta;
-        game.settings.set("incarnate","incCalendar",calendar);
+        game.settings.set("incarnateWorldBuilding","incCalendar",calendar);
     }
     static monthChange(delta,calendar){
         if (calendar === undefined){
-            calendar = game.settings.get("incarnate","incCalendar");
+            calendar = game.settings.get("incarnateWorldBuilding","incCalendar");
         }
         calendar.date.m = calendar.date.m+delta;
         if (calendar.date.m > calendar.maxes.m){
@@ -66,12 +66,12 @@ IncarnateGamingLLC.Calendar = class Calendar{
             calendar.date.m = calendar.date.m+change*calendar.maxes.m;
             Calendar.yearChange(-change,calendar);
         }else{
-            game.settings.set("incarnate","incCalendar",calendar);
+            game.settings.set("incarnateWorldBuilding","incCalendar",calendar);
         }
     }
     static dayChange(delta,calendar){
         if (calendar === undefined){
-            calendar = game.settings.get("incarnate","incCalendar");
+            calendar = game.settings.get("incarnateWorldBuilding","incCalendar");
         }
         calendar.date.d = calendar.date.d+delta;
         if (calendar.date.d > calendar.maxes.d){
@@ -83,12 +83,12 @@ IncarnateGamingLLC.Calendar = class Calendar{
             calendar.date.d = calendar.date.d+change*calendar.maxes.d;
             Calendar.monthChange(-change,calendar);
         }else{
-            game.settings.set("incarnate","incCalendar",calendar);
+            game.settings.set("incarnateWorldBuilding","incCalendar",calendar);
         }
     }
     static hourChange(delta,calendar){
         if (calendar === undefined){
-            calendar = game.settings.get("incarnate","incCalendar");
+            calendar = game.settings.get("incarnateWorldBuilding","incCalendar");
         }
         calendar.date.h = calendar.date.h+delta;
         if (calendar.date.h > calendar.maxes.h){
@@ -100,12 +100,12 @@ IncarnateGamingLLC.Calendar = class Calendar{
             calendar.date.h = calendar.date.h+change*calendar.maxes.h;
             Calendar.dayChange(-change,calendar);
         }else{
-            game.settings.set("incarnate","incCalendar",calendar);
+            game.settings.set("incarnateWorldBuilding","incCalendar",calendar);
         }
     }
     static minuteChange(delta,calendar){
         if (calendar === undefined){
-            calendar = game.settings.get("incarnate","incCalendar");
+            calendar = game.settings.get("incarnateWorldBuilding","incCalendar");
         }
         calendar.date.i = calendar.date.i+delta;
         if (calendar.date.i > calendar.maxes.i){
@@ -117,12 +117,12 @@ IncarnateGamingLLC.Calendar = class Calendar{
             calendar.date.i = calendar.date.i+change*calendar.maxes.i;
             Calendar.hourChange(-change,calendar);
         }else{
-            game.settings.set("incarnate","incCalendar",calendar);
+            game.settings.set("incarnateWorldBuilding","incCalendar",calendar);
         }
     }
     static secondChange(delta,calendar){
         if (calendar === undefined){
-            calendar = game.settings.get("incarnate","incCalendar");
+            calendar = game.settings.get("incarnateWorldBuilding","incCalendar");
         }
         calendar.date.s = calendar.date.s+delta;
         if (calendar.date.s > calendar.maxes.s){
@@ -134,13 +134,13 @@ IncarnateGamingLLC.Calendar = class Calendar{
             calendar.date.s = calendar.date.s+change*calendar.maxes.s;
             Calendar.minuteChange(-change,calendar);
         }else{
-            game.settings.set("incarnate","incCalendar",calendar);
+            game.settings.set("incarnateWorldBuilding","incCalendar",calendar);
         }
     }
     static updateDisplayedDates(){
         let dateElements = document.getElementsByClassName('incarnate-calendar-date');
         let timeElements = document.getElementsByClassName('incarnate-calendar-time');
-        let calendar = game.settings.get("incarnate","incCalendar");
+        let calendar = game.settings.get("incarnateWorldBuilding","incCalendar");
         console.log('calendar', calendar);
         [].forEach.call(dateElements, dateElement=>{
             dateElement.innerHTML = `${calendar.monthNames[calendar.date.m]} ${calendar.date.d}, ${calendar.date.y}`;
@@ -150,7 +150,7 @@ IncarnateGamingLLC.Calendar = class Calendar{
         });
     }
     static incarnateDate(){
-        var calendar = game.settings.get("incarnate","incCalendar");
+        var calendar = game.settings.get("incarnateWorldBuilding","incCalendar");
         calendar = calendar.date;
         return calendar.y + "_" + calendar.m + "_"+calendar.d+"_"+calendar.h+"_"+calendar.i+"_"+calendar.s;
     }
@@ -183,7 +183,7 @@ IncarnateGamingLLC.Calendar = class Calendar{
         const year = Number(parts[0])<10 ? "000" + parts[0]:
             Number(parts[0])<100 ? "00" + parts[0]:
                 Number(parts[0])<1000 ? "0" + parts[0]: parts[0];
-        const month = game.settings.get("incarnate","incCalendar").monthNames[Number(parts[1])-1];
+        const month = game.settings.get("incarnateWorldBuilding","incCalendar").monthNames[Number(parts[1])-1];
         const day = Number(parts[2])<10 ? "0"+parts[2] : parts[2];
         console.log(year,month,day);
         return month.substr(0,3) + " " + day + " " + year;

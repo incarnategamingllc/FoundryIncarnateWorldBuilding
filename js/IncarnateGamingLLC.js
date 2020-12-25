@@ -8,7 +8,7 @@ class IncarnateGamingLLC{
      * Counts the number of rolls made by the Incarnate System this session
      * @type {number}
      */
-    rollCount = 0;
+    static rollCount = 0;
 
     /**
      * Performs a deep copy of an object returning a new object

@@ -4,7 +4,7 @@
  */
 IncarnateGamingLLC.ForestGenerator = class ForestGenerator extends IncarnateGamingLLC.SceneGen{
     static async newForest(name,width,height){
-        const settings = game.settings.get("incarnate","incSceneGenSettings");
+        const settings = game.settings.get("incarnateWorldBuilding","incSceneGenSettings");
         width = Number(width) || Number(settings.width) || 3000;
         height = Number(height) || Number(settings.height) || 3000;
         if (typeof name === "object"){
@@ -13,7 +13,7 @@ IncarnateGamingLLC.ForestGenerator = class ForestGenerator extends IncarnateGami
             }else{
                 name = "Forest " + settings.sceneCount;
                 settings.sceneCount++;
-                game.settings.set("incarnate","incSceneGenSettings",settings);
+                game.settings.set("incarnateWorldBuilding","incSceneGenSettings",settings);
             }
         }
         const scene = await CONFIG.Scene.entityClass.create({name:name,width:width,height:height});

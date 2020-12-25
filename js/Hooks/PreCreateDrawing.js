@@ -2,7 +2,7 @@ Hooks.on("preCreateDrawing", async (drawingClass,sceneId,data) =>{
     if (data.flags === undefined) return true;
     if (data.flags.type === undefined) return true;
     if (data.flags.type === "tree"){
-        const settings = game.settings.get("incarnate","incSceneGenSettings");
+        const settings = game.settings.get("incarnateWorldBuilding","incSceneGenSettings");
         const scene = game.scenes.get(sceneId)
         var drawings = JSON.parse(JSON.stringify(scene.data.drawings));
         var drawing = drawings.find(drawing=>drawing.id===data.id);

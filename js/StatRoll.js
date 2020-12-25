@@ -17,7 +17,7 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
             }
         }
         if (found === false){
-            const worldStatRoll = game.settings.get("incarnate","incStatRoll");
+            const worldStatRoll = game.settings.get("incarnateWorldBuilding","incStatRoll");
             flags.incRegions.incStatRoll = worldStatRoll;
         }
         folder.update({flags:flags});
@@ -28,7 +28,7 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
         if (flags.statRolls === undefined){
             flags.statRolls = [];
         }
-        const settings = game.settings.get("incarnate","incStatRoll");
+        const settings = game.settings.get("incarnateWorldBuilding","incStatRoll");
         const statRoll = StatRoll.statRoll(settings.dice,settings.guarantee,settings.rolls,settings.abortCountTrigger,settings.forceOrder);
         flags.statRolls.push({
             statRoll:statRoll,
@@ -155,12 +155,12 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
                 console.log(settings);
             }
         });
-        if( game.settings.get("incarnate","incStatRoll") !=""){
-            return(game.settings.get("incarnate","incStatRoll"));
+        if( game.settings.get("incarnateWorldBuilding","incStatRoll") !=""){
+            return(game.settings.get("incarnateWorldBuilding","incStatRoll"));
         }else {
             console.log("Creating StatRoll Settings");
             var tempStatRoll = StatRoll.incarnateStatRollDefaultArray();
-            game.settings.set("incarnate","incStatRoll",tempStatRoll);
+            game.settings.set("incarnateWorldBuilding","incStatRoll",tempStatRoll);
             return(tempStatRoll);
         }
     }

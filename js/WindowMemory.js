@@ -14,12 +14,12 @@ IncarnateGamingLLC.WindowMemory = class WindowMemory{
                 console.log(settings);
             }
         });
-        if( game.settings.get("incarnate","incWindowMemory") !=""){
-            return(game.settings.get("incarnate","incWindowMemory"));
+        if( game.settings.get("incarnateWorldBuilding","incWindowMemory") !=""){
+            return(game.settings.get("incarnateWorldBuilding","incWindowMemory"));
         }else {
             console.log("Creating Window Memory Settings");
             var tempWindow = WindowMemory.defaultArray();
-            game.settings.set("incarnate","incWindowMemory",tempWindow);
+            game.settings.set("incarnateWorldBuilding","incWindowMemory",tempWindow);
             return(tempWindow);
         }
     }
@@ -36,7 +36,7 @@ IncarnateGamingLLC.WindowMemory = class WindowMemory{
     static resetDefault(){
         console.log("Creating Window Memory Settings");
         var tempWindow = WindowMemory.defaultArray();
-        game.settings.set("incarnate","incWindowMemory",tempWindow);
+        game.settings.set("incarnateWorldBuilding","incWindowMemory",tempWindow);
         return(tempWindow);
     }
 }
