@@ -145,7 +145,7 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
         return Math.floor((score - 10) / 2);
     }
     static incarnateSetupDefaults(){
-        game.settings.register("incarnate","incStatRoll", {
+        game.settings.register("incarnateWorldBuilding","incStatRoll", {
             name: "Stat Roll Options",
             hint: "Tracks defaults for automated stat rolling.",
             default: "",

@@ -26,7 +26,7 @@ IncarnateGamingLLC.Calendar = class Calendar{
      * Calendar Prep
      */
     static incarnateSetupCalendar (){
-        game.settings.register("incarnate","incCalendar", {
+        game.settings.register("incarnateWorldBuilding","incCalendar", {
             name: "Calendar",
             hint: "Tracks game time",
             default: "",

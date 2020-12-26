@@ -30,6 +30,7 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
     }
     /* -------------------------------------------- */
     async close(options) {
+        console.log('gm screen is closing');
         let settings = game.settings.get("incarnateWorldBuilding","incWindowMemory");
         settings.gmScreen = this.position;
         game.settings.set("incarnateWorldBuilding","incWindowMemory",settings);
@@ -46,9 +47,8 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
         var templateData = {"folder":[]};
         var folders = game.folders.entities;
         var folderLen = folders.length;
-        var selectFolder = document.getElementById("journalFolder");
         for (var b=0;b<folderLen; b++){
-            if (folders[b].type == "JournalEntry"){
+            if (folders[b].type === "JournalEntry"){
                 templateData.folder.push({
                     "name":folders[b].name,
                     "value":folders[b]._id
@@ -78,11 +78,11 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
         const incarnateTemplates = await IncarnateGamingLLC.Reference.loadIncarnateTemplates();
         var templateLen = incarnateTemplates.length;
         for (var a=0; a<templateLen;a++){
-            if (incarnateTemplates[a].flags.templateType == mySelect){
+            if (incarnateTemplates[a].flags.templateType === mySelect){
                 var option = document.createElement("option"),
                     tempName = incarnateTemplates[a].name;
-                if (tempName.search(/class="generate"/)!=-1){
-                    tempName = tempName.replace(/ ?\-? ?<span class="generate".*<\/span> ?\-? ?/,"")
+                if (tempName.search(/class="generate"/)!==-1){
+                    tempName = tempName.replace(/ ?-? ?<span class="generate".*<\/span> ?-? ?/,"")
                 }
                 tempName= IncarnateGamingLLC.Reference.sanitizeName(tempName);
                 option.text=tempName;
@@ -153,7 +153,7 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
         [].forEach.call(generateDungeon, add=>{
             add.addEventListener("click", IncarnateGamingLLC.DungeonGenerator.newDungeon);
         });
-        let handlerResetMapSettings = async ev =>{
+        let handlerResetMapSettings = async () =>{
             await IncarnateGamingLLC.SceneGen.resetDefault();
             ui._incGMScreen.render(false);
         }
@@ -176,29 +176,30 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
             button.addEventListener("click", IncarnateGamingLLC.Reference.templateInsert);
         });
     }
-    static async addLeast(ev){
+    static async addLeast(){
         const settings = game.settings.get("incarnateWorldBuilding","incStatRoll");
-        settings.guarantee.atLeast.push({value:0, quantity:0});
+        console.log(settings);
+        IncarnateGamingLLC.pushObjectIntoObject(settings.guarantee.atLeast, {value:0, quantity:0});
         await game.settings.set("incarnateWorldBuilding","incStatRoll",settings);
         ui._incGMScreen.render(true);
     }
     static async deleteLeast(ev){
         const id = IncarnateGamingLLC.Reference.getClosestClass(ev.srcElement,"atLeast-entry").getAttribute("data-id");
         const settings = game.settings.get("incarnateWorldBuilding","incStatRoll");
-        settings.guarantee.atLeast.splice(id,1);
+        delete settings.guarantee.atLeast[id];
         await game.settings.set("incarnateWorldBuilding","incStatRoll",settings);
         ui._incGMScreen.render(true);
     }
-    static async addMost(ev){
+    static async addMost(){
         const settings = game.settings.get("incarnateWorldBuilding","incStatRoll");
-        settings.guarantee.atMost.push({value:0, quantity:0});
+        IncarnateGamingLLC.pushObjectIntoObject(settings.guarantee.atMost, {value:0, quantity:0});
         await game.settings.set("incarnateWorldBuilding","incStatRoll",settings);
         ui._incGMScreen.render(true);
     }
     static async deleteMost(ev){
         const id = IncarnateGamingLLC.Reference.getClosestClass(ev.srcElement,"atMost-entry").getAttribute("data-id");
         const settings = game.settings.get("incarnateWorldBuilding","incStatRoll");
-        settings.guarantee.atMost.splice(id,1);
+        delete settings.guarantee.atMost[id];
         await game.settings.set("incarnateWorldBuilding","incStatRoll",settings);
         ui._incGMScreen.render(true);
     }
@@ -206,7 +207,9 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
         console.log(event, formData);
         let expandedObject = expandObject(formData, 5);
         console.log(expandedObject);
-        game.settings.set("incarnateWorldBuilding","incStatRoll",expandedObject.statRollSettings);
-        game.settings.set("incarnateWorldBuilding","incSceneGenSettings",expandedObject.sceneGenSettings);
+        let originalStatRoll = game.settings.get("incarnateWorldBuilding", "incStatRoll");
+        let originalSceneGen = game.settings.get("incarnateWorldBuilding", "incSceneGenSettings");
+        game.settings.set("incarnateWorldBuilding","incStatRoll",mergeObject(originalStatRoll, expandedObject.statRollSettings));
+        game.settings.set("incarnateWorldBuilding","incSceneGenSettings",mergeObject(originalSceneGen,expandedObject.sceneGenSettings));
     }
 }

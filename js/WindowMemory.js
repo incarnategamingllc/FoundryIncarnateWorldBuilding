@@ -4,7 +4,7 @@
  */
 IncarnateGamingLLC.WindowMemory = class WindowMemory{
     static incarnateSetupDefaults(){
-        game.settings.register("incarnate","incWindowMemory", {
+        game.settings.register("incarnateWorldBuilding","incWindowMemory", {
             name: "Remembers Key Window Sizes",
             hint: "Tracks the size of a few very important windows.",
             default: "",

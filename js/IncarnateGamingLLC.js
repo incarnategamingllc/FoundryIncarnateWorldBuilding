@@ -35,5 +35,14 @@ class IncarnateGamingLLC{
         return div.firstChild;
     }
 
+    static pushObjectIntoObject(parent, newChild){
+        let keys = Object.keys(parent);
+        keys.sort();
+        let lastKey = keys[keys.length -1];
+        let newKey = isNaN(Number(lastKey)) ? lastKey + '1' : Number(lastKey) + 1;
+        parent[newKey] = newChild
+        return parent;
+    }
+
     static PLAYER_QUICK_SHEET = '<span class="crossReference" data-fid="g7NQ9CEj2AiLpxXs" data-type="JournalEntry" data-parent="HlyV9728fyQUUdDx" data-pack="world.incarnateRules">Player Quick Sheet</span>';
 }

@@ -4,7 +4,7 @@
  */
 IncarnateGamingLLC.SceneGen = class SceneGen{
     static incarnateSetupDefaults(){
-        game.settings.register("incarnate","incSceneGenSettings", {
+        game.settings.register("incarnateWorldBuilding","incSceneGenSettings", {
             name: "Scene Generation Options",
             hint: "Tracks the default options for random scene generation.",
             default: "",
