@@ -33,8 +33,8 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
         console.log('gm screen is closing');
         let settings = game.settings.get("incarnateWorldBuilding","incWindowMemory");
         settings.gmScreen = this.position;
-        game.settings.set("incarnateWorldBuilding","incWindowMemory",settings);
-        super.close(options);
+        await game.settings.set("incarnateWorldBuilding","incWindowMemory",settings);
+        await super.close(options);
     }
 
     /**
@@ -67,7 +67,6 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
         templateData.title="GM's Screen";
         templateData.sceneGenSettings = game.settings.get("incarnateWorldBuilding","incSceneGenSettings");
         templateData.statRollSettings = game.settings.get("incarnateWorldBuilding","incStatRoll");
-        console.log(templateData);
         return templateData;
     }
     static async addDropDown (ev,srcElement){
@@ -178,7 +177,6 @@ IncarnateGamingLLC.GMsScreen = class GMsScreen extends FormApplication {
     }
     static async addLeast(){
         const settings = game.settings.get("incarnateWorldBuilding","incStatRoll");
-        console.log(settings);
         IncarnateGamingLLC.pushObjectIntoObject(settings.guarantee.atLeast, {value:0, quantity:0});
         await game.settings.set("incarnateWorldBuilding","incStatRoll",settings);
         ui._incGMScreen.render(true);

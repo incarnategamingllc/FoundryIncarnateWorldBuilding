@@ -103,18 +103,20 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
     static statRollGuarantee(rolledArray,guarantee){
         if (guarantee === undefined) return true;
         if (guarantee.atLeast !== undefined){
-            if (guarantee.atLeast.length > 0){
-                for (var a=0; a<guarantee.atLeast.length; a++){
-                    var filteredStats = rolledArray.filter(stat => stat >= guarantee.atLeast[a].value);
-                    if (filteredStats.length < guarantee.atLeast[a].quantity) return false;
+            let atLeastArray = Object.values(guarantee.atLeast);
+            if (atLeastArray.length > 0){
+                for (let a=0; a<atLeastArray.length; a++){
+                    let filteredStats = rolledArray.filter(stat => stat >= atLeastArray[a].value);
+                    if (filteredStats.length < atLeastArray[a].quantity) return false;
                 }
             }
         }
         if (guarantee.atMost !== undefined){
-            if (guarantee.atMost.length > 0){
-                for (var a=0; a<guarantee.atMost.length; a++){
-                    var filteredStats = rolledArray.filter(stat => stat <= guarantee.atMost[a].value);
-                    if (filteredStats.length < guarantee.atMost[a].quantity) return false;
+            let atMostArray = Object.values(guarantee.atMost);
+            if (atMostArray.length > 0){
+                for (let a=0; a<atMostArray.length; a++){
+                    let filteredStats = rolledArray.filter(stat => stat <= atMostArray[a].value);
+                    if (filteredStats.length < atMostArray[a].quantity) return false;
                 }
             }
         }
@@ -158,8 +160,7 @@ IncarnateGamingLLC.StatRoll = class StatRoll{
         if( game.settings.get("incarnateWorldBuilding","incStatRoll") !=""){
             return(game.settings.get("incarnateWorldBuilding","incStatRoll"));
         }else {
-            console.log("Creating StatRoll Settings");
-            var tempStatRoll = StatRoll.incarnateStatRollDefaultArray();
+            let tempStatRoll = StatRoll.incarnateStatRollDefaultArray();
             game.settings.set("incarnateWorldBuilding","incStatRoll",tempStatRoll);
             return(tempStatRoll);
         }
