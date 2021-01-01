@@ -36,18 +36,4 @@ Hooks.on('ready', () =>  {
         }
     })();
     Note.prototype._onClickLeft2 = IncarnateNoteDoubleLeft;
-    //Add chat macros
-    // const IncarnateChatLogParse = (function(){
-    //     let cachedFunction = ChatLog.parse;
-    //     return (message)=>{
-    //         let result = IncarnateGamingLLC.ChatMacros.parsePattern(message);
-    //         console.log(message, result);
-    //         if(!result) {
-    //             result = cachedFunction(message);
-    //         }
-    //         console.log(result)
-    //         return result;
-    //     }
-    // })();
-    // ChatLog.parse = IncarnateChatLogParse;
 });
