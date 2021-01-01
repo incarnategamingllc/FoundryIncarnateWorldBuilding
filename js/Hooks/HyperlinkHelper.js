@@ -8,16 +8,16 @@ IncarnateGamingLLC.HyperlinkHelper = class HyperlinkHelper{
      * Takes a JQuery html node from a template
      * @param html
      */
-    static addHyperlinkSupport(html){
-        var htmlDOM = html[0];
-        this.addHyperlinkSupportToDOM(htmlDOM, html);
+    static addHyperlinkSupport(html, sheet){
+        if(!html) return true;
+        this.addHyperlinkSupportToDOM(html, sheet);
     }
-    static addHyperlinkSupportToDOM(htmlDOM, html){
-        if (htmlDOM === undefined) return true;
+    static addHyperlinkSupportToDOM(html, sheet){
+        let htmlDOM = html[0];
+        if(!htmlDOM) return true;
         IncarnateGamingLLC.Reference.crossReferenceSetClick(htmlDOM);
         IncarnateGamingLLC.Reference.populateSetClick(htmlDOM);
-        IncarnateGamingLLC.Reference.secretSetContext(html[0],context);
+        IncarnateGamingLLC.Reference.secretSetContext(htmlDOM, sheet);
         IncarnateGamingLLC.Reference.rollMacroSetClick(htmlDOM);
-        html = $(htmlDOM);
     }
 }

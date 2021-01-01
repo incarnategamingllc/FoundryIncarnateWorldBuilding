@@ -1,3 +1,3 @@
-Hooks.on("renderChatMessage", (chatMessage, html, jsonMessage) => {
-    IncarnateGamingLLC.HyperlinkHelper.addHyperlinkSupport(html);
+Hooks.on("renderChatMessage", (chatMessage, html, data) => {
+    IncarnateGamingLLC.HyperlinkHelper.addHyperlinkSupport(html, chatMessage);
 });

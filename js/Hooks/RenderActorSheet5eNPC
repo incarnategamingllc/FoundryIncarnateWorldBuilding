@@ -1,3 +1,0 @@
-Hooks.on("renderActorSheet5eNPC", (context,html,data) => {
-    IncarnateGamingLLC.HyperlinkHelper.addHyperlinkSupport(html);
-});

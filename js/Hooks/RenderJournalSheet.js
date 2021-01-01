@@ -1,5 +1,6 @@
 //Adds a quest section to journal entries
-Hooks.on("renderJournalSheet", async (context,html,entity) => {
+Hooks.on("renderJournalSheet", async (journalSheet,html,entity) => {
+    console.log(journalSheet, html, entity);
     const journal = entity.entity;
     var htmlDom = $(html)[0];
     if (htmlDom === undefined) return true;
@@ -82,5 +83,5 @@ Hooks.on("renderJournalSheet", async (context,html,entity) => {
             //html.find('.editor-content[data-edit]').each((i, div) => FormApplication.prototype._activateEditor(div));
         }
     }
-    IncarnateGamingLLC.HyperlinkHelper.addHyperlinkSupportToDOM(htmlDom, html);
+    IncarnateGamingLLC.HyperlinkHelper.addHyperlinkSupportToDOM(html, journalSheet);
 });

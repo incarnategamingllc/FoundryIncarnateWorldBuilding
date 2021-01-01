@@ -1,3 +1,3 @@
-Hooks.on("renderActorSheet", (context,html,data) => {
-    IncarnateGamingLLC.HyperlinkHelper.addHyperlinkSupport(html);
+Hooks.on("renderActorSheet", (actorSheet,html,data) => {
+    IncarnateGamingLLC.HyperlinkHelper.addHyperlinkSupport(html, actorSheet);
 });

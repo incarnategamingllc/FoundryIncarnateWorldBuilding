@@ -45,7 +45,6 @@
 		"./js/Anvil.js",
 		"./js/AutoKill.js",
 		"./js/Calendar.js",
-		"./js/ChatMacros.js",
 		"./js/DialogChange.js",
 		"./js/GMsScreen.js",
 		"./js/JournalEntry.js",

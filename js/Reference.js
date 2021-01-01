@@ -140,6 +140,7 @@ IncarnateGamingLLC.Reference = class Reference{
         temporaryRoll.toMessage();
     }
     static secretSetContext(html,context){
+        console.log(html, context);
         const secretNodes = html.getElementsByClassName("secret");
         const entryOptions = [
             {
@@ -191,12 +192,13 @@ IncarnateGamingLLC.Reference = class Reference{
         });
     }
     static async secretReveal(secret,context){
+        console.log(context);
         //secret = secret[0];
         const navElement = secret.getElementsByTagName("nav");
         [].forEach.call(navElement, nav =>{
             nav.parentElement.removeChild(nav);
         });
-        if (secret.classList.value.match(/learned/) !== null){
+        if (secret.classList.contains('learned')){
             secret.classList.remove("learned");
         }else{
             secret.classList.add("learned");
