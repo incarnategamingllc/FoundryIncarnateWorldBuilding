@@ -75,6 +75,22 @@ IncarnateGamingLLC.QuestEditor = class QuestEditor extends FormApplication {
 
     /* -------------------------------------------- */
 
+    activateListeners(html){
+        super.activateListeners(html);
+        let htmlDOM = $(html)[0];
+        htmlDOM.addEventListener('drop', this.changeRewardOnDrop.bind(this));
+    }
+
+    changeRewardOnDrop(event){
+        event.stopPropagation();
+        let incomingData = event.dataTransfer.getData("text/plain");
+        if(IncarnateGamingLLC.Reference.incarnateJSONCheck(incomingData)){
+            let data = JSON.parse(incomingData);
+            let rewardInput = this.form.getElementsByClassName('reward')[0];
+            rewardInput.value = data.id;
+        }
+    }
+
     /**
      * Implement the _updateObject method as required by the parent class spec
      * This defines how to update the subject of the form when the form is submitted
