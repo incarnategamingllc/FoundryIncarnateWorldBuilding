@@ -141,32 +141,9 @@
 	display: inline;
 }
 /*Journal Entries*/
-.journal-sheet form{
-	overflow:hidden;
-	display:flex;
-	flex-direction:column;
-}
-.journal-sheet .editor{
-	flex: 1;
-}
-.journal-sheet div.incarnateQuestHeader{
-	flex: 0 0 auto;
-	font-weight:bold;
-}
-.journal-sheet div.incarnateQuestHeader .incarnateQuestMainTitle{
-	float: left;
-}
-.journal-sheet div.incarnateQuestHeader .incarnateAddQuest{
-	float:right;
-}
-.journal-sheet div.incarnateQuests{
-	flex: 0.3 1;
-	overflow-y:auto;
-}
-.journal-sheet .incarnateQuests .quest-control{
-	float:right;
-	padding-left:15px;
-	padding-right:15px;
+.journal-sheet .editor-content{
+	height: fit-content;
+	min-height: 200px;
 }
 section.secret{
 	background:rgba(226, 18, 18, 0.15);
@@ -178,18 +155,10 @@ section.secret.learned{
 .quest-editor .editable{
 	display:flex;
 	flex-direction:column;
-}
-.quest-editor .for-group-stacked{
-	flex: 0 0 auto;
-}
-.quest-editor .questProperties{
-	flex: 0 0 auto;
+    height: 100%;
 }
 .quest-editor .editor{
 	flex:1;
-}
-.quest-editor button{
-	flex: 0 0 auto;
 }
 /*Changes to Journal Note Configuration*/
 nav[data-group="noteConfigTabs"] a{

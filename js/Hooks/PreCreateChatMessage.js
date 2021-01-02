@@ -1,4 +1,5 @@
 Hooks.on("chatMessage", (chatFunction,chatMessage, chatData) =>{
+    if(game.settings.get("incarnateWorldBuilding","chatMacros") === false) return true;
     if (chatMessage === undefined || chatMessage.match(/^\//) === null) return true;
     let found = false;
     if (chatMessage.match(/^\/((help)|(incarnate)|(incarnateHelp))/) !== null){

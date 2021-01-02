@@ -37,9 +37,14 @@ class IncarnateGamingLLC{
 
     static pushObjectIntoObject(parent, newChild){
         let keys = Object.keys(parent);
-        keys.sort();
-        let lastKey = keys[keys.length -1];
-        let newKey = isNaN(Number(lastKey)) ? lastKey + '1' : Number(lastKey) + 1;
+        let newKey;
+        if(keys.length > 0){
+            keys.sort();
+            let lastKey = keys[keys.length -1];
+            newKey = isNaN(Number(lastKey)) ? lastKey + '1' : Number(lastKey) + 1;
+        }else{
+            newKey = 0;
+        }
         parent[newKey] = newChild
         return parent;
     }

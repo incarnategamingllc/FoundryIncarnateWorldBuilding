@@ -10,14 +10,16 @@ IncarnateGamingLLC.HyperlinkHelper = class HyperlinkHelper{
      */
     static addHyperlinkSupport(html, sheet){
         if(!html) return true;
-        this.addHyperlinkSupportToDOM(html, sheet);
-    }
-    static addHyperlinkSupportToDOM(html, sheet){
         let htmlDOM = html[0];
         if(!htmlDOM) return true;
+        this.addHyperlinkSupportToDOM(htmlDOM, sheet);
+    }
+    static addHyperlinkSupportToDOM(htmlDOM, sheet){
         IncarnateGamingLLC.Reference.crossReferenceSetClick(htmlDOM);
         IncarnateGamingLLC.Reference.populateSetClick(htmlDOM);
-        IncarnateGamingLLC.Reference.secretSetContext(htmlDOM, sheet);
+        if(game.settings.get("incarnateWorldBuilding","journalSecrets") && sheet){
+            IncarnateGamingLLC.Reference.secretSetContext(htmlDOM, sheet);
+        }
         IncarnateGamingLLC.Reference.rollMacroSetClick(htmlDOM);
     }
 }

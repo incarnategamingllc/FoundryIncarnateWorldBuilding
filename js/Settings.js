@@ -4,17 +4,19 @@
  */
 IncarnateGamingLLC.Settings = class Settings{
     static incarnateSetupDefaults(){
-        var array = Settings.defaultArrayAnvil();
-        game.settings.register(array.module,array.key,array);
-        array = Settings.defaultAutoKill();
-        game.settings.register(array.module,array.key,array);
-        array = Settings.defaultArrayRegion();
-        game.settings.register(array.module,array.key,array);
-        array = Settings.defaultArraySceneTabs();
-        game.settings.register(array.module,array.key,array);
+        IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectAnvil());
+        IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectAutoKill());
+        IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectChatMacros());
+        IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectJournalRevealSecrets());
+        IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectJournalQuests());
+        IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectRegion());
+        IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectSceneTabs());
         return true;
     }
-    static defaultArray(){
+    static registerSetting(object){
+        game.settings.register(object.module,object.key,object);
+    }
+    static defaultObject(){
         return{
             config:true,
             default:true,
@@ -23,47 +25,72 @@ IncarnateGamingLLC.Settings = class Settings{
             type: Boolean
         }
     }
-    static resetDefault(){
-        var array = Settings.defaultArrayAnvil();
-        game.settings.set(array.module,array.key,array.default);
-        array = Settings.defaultAutoKill();
-        game.settings.set(array.module,array.key,array.default);
-        array = Settings.defaultArrayRegion();
-        game.settings.set(array.module,array.key,array.default);
-        array = Settings.defaultArraySceneTabs();
-        game.settings.set(array.module,array.key,array.default);
-        return true;
+    // static resetDefault(){
+    //     let object = Settings.defaultObjectAnvil();
+    //     game.settings.set(object.module,object.key,object.default);
+    //     object = Settings.defaultObjectAutoKill();
+    //     game.settings.set(object.module,object.key,object.default);
+    //     object = Settings.defaultObjectRegion();
+    //     game.settings.set(object.module,object.key,object.default);
+    //     object = Settings.defaultObjectSceneTabs();
+    //     game.settings.set(object.module,object.key,object.default);
+    //     return true;
+    // }
+    static defaultObjectAnvil(){
+        const object = Settings.defaultObject();
+        object.name = "Anvil Buttons";
+        object.hint = "Turns anvil buttons on.";
+        object.key = "anvilButtons";
+        return object;
     }
-    static defaultAutoKill(){
-        const array = Settings.defaultArray();
-        array.name = "Auto Kill";
-        array.hint = "When an actor in the active scene is reduced to 0 hp check if it is in combat tracker and if so mark it as dead. If an actor is raised above 0 hp mark it as alive.";
-        array.key = "autoKill";
-        return array;
+    static defaultObjectAutoKill(){
+        const object = Settings.defaultObject();
+        object.name = "Auto Kill";
+        object.hint = "When an actor in the active scene is reduced to 0 hp check if it is in combat tracker and if so mark it as dead. If an actor is raised above 0 hp mark it as alive.";
+        object.key = "autoKill";
+        object.scope="world";
+        return object;
     }
-    static defaultArrayAnvil(){
-        const array = Settings.defaultArray();
-        array.name = "Anvil Buttons";
-        array.hint = "Turns anvil buttons on.";
-        array.key = "anvilButtons";
-        return array;
+    static defaultObjectChatMacros(){
+        const object = Settings.defaultObject();
+        object.name = "Custom Chat Macros";
+        object.hint = "Adds default Incarnate Chat Macros. Try '/help' for details.";
+        object.key = "chatMacros";
+        object.scope="world";
+        return object;
     }
-    static defaultArrayRegion(){
-        const array = Settings.defaultArray();
-        array.name="Current Region";
-        array.hint="Remembers the current region to set properties to match and add generated data to that folder";
-        array.key="incRegions";
-        array.config=false;
-        array.default={};
-        array.scope="world";
-        array.type=Object;
-        return array;
+    static defaultObjectJournalRevealSecrets(){
+        const object = Settings.defaultObject();
+        object.name = "Journal Reveal Secrets";
+        object.hint = "Gives owners the ability to reveal secrets on Journal Entries";
+        object.key = "journalSecrets";
+        object.scope="world";
+        return object;
     }
-    static defaultArraySceneTabs(){
-        const array = Settings.defaultArray();
-        array.name = "Scene Tabs";
-        array.hint = "Changes the scene config to a tabbed view and adds a flag tab.";
-        array.key = "sceneTabs";
-        return array;
+    static defaultObjectJournalQuests(){
+        const object = Settings.defaultObject();
+        object.name = "Journal Quests";
+        object.hint = "Adds a Quests section to Journal Entries";
+        object.key = "journalQuests";
+        object.scope="world";
+        return object;
+    }
+    static defaultObjectRegion(){
+        const object = Settings.defaultObject();
+        object.name="Current Region";
+        object.hint="Remembers the current region to set properties to match and add generated data to that folder";
+        object.key="incRegions";
+        object.config=false;
+        object.default={};
+        object.scope="world";
+        object.type=Object;
+        return object;
+    }
+    static defaultObjectSceneTabs(){
+        const object = Settings.defaultObject();
+        object.name = "Scene Tabs";
+        object.hint = "Changes the scene config to a tabbed view and adds a flag tab.";
+        object.key = "sceneTabs";
+        return object;
     }
 }

@@ -3,15 +3,17 @@
  */
 IncarnateGamingLLC.Reference = class Reference{
     static async lookupActorComplete(_id,pack,packContent){
-        var result = await this.lookupLocalActorByOrigin(_id);
-        if (result[0]!==false) {return result};
-        result = await this.lookupPackEntityByOrigin(_id,pack,packContent);
-        if (result[0]!==false) {return result};
-        result = await this.lookupLocalActorById(_id);
-        if (result[0]!==false) {return result};
-        result = await this.lookupPackEntityById(_id,pack);
-        if (result[0]!==false) {return result};
-        return [false];
+        let result = await this.lookupLocalActorByOrigin(_id);
+        if(!result[0] && pack){
+            result = await this.lookupPackEntityByOrigin(_id, pack, packContent);
+        }
+        if(!result[0]){
+            result = await this.lookupLocalActorById(_id);
+        }
+        if(!result[0] && pack){
+            result = await this.lookupPackEntityById(_id, pack);
+        }
+        return result;
     }
     static lookupLocalActorByOrigin(originID){
         const actors = game.actors.entities;
@@ -114,7 +116,7 @@ IncarnateGamingLLC.Reference = class Reference{
     }
     static async lookupPackEntityById(_id,pack){
         const packFound = this.incarnatePackFind(pack);
-        if (packFound===[false]){return [false]};
+        if (!packFound){return [false]};
         const tempItem = await packFound.getEntity(_id);
         const sheet = [tempItem,pack]
         return sheet;
@@ -140,7 +142,6 @@ IncarnateGamingLLC.Reference = class Reference{
         temporaryRoll.toMessage();
     }
     static secretSetContext(html,context){
-        console.log(html, context);
         const secretNodes = html.getElementsByClassName("secret");
         const entryOptions = [
             {
@@ -202,14 +203,13 @@ IncarnateGamingLLC.Reference = class Reference{
             secret.classList.remove("learned");
         }else{
             secret.classList.add("learned");
-            ChatMessage.create({
+            await ChatMessage.create({
                 user:game.userId,
                 content:secret.innerHTML,
                 type:1
             },{});
         }
         const editorContent = Reference.getClosestClass(secret,"editor-content");
-        console.log(editorContent,context);
         context.object.update({[editorContent.getAttribute("data-edit")]:editorContent.innerHTML});
         await Reference.incarnateDelay(500);
         context.object.render(false);
@@ -254,14 +254,15 @@ IncarnateGamingLLC.Reference = class Reference{
             }
         }
     }
-    static crossReferenceClick(ev) {
+    static crossReferenceClick(event) {
+        event.stopPropagation();
         //console.log("I've been clicked!!",ev);
-        var optionalPack = ev.currentTarget.getAttribute("data-pack");
+        var optionalPack = event.currentTarget.getAttribute("data-pack");
         if (optionalPack === ""){optionalPack = null};
-        var optionalParent = ev.currentTarget.getAttribute("data-parent");
+        var optionalParent = event.currentTarget.getAttribute("data-parent");
         if (optionalParent === ""){optionalParent = null};
         //console.log(ev.currentTarget);//,optionalPack,optionalParent
-        Reference.crossReference(ev.currentTarget.getAttribute("data-fid"),ev.currentTarget.getAttribute("data-type"),optionalPack,optionalParent);
+        IncarnateGamingLLC.Reference.crossReference(event.currentTarget.getAttribute("data-fid"),event.currentTarget.getAttribute("data-type"),optionalPack,optionalParent);
     }
     static crossReferenceDragStart(ev){
         if (ev.srcElement.getAttribute("data-pack")!== undefined && ev.srcElement.getAttribute("data-pack")!== null){
