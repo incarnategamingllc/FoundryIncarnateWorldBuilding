@@ -2,21 +2,25 @@
     <div class="form-group-stacked">
         <div class="form-group">
             <label for="name">Quest Name</label>
-            <input name="name" type="text" value="{{quest.name}}" placeholder="Quest Name"/>
+            <input name="name" type="text" value="{{quest.name}}" placeholder="Quest Name" id="name"/>
         </div>
     </div>
     <div class="questProperties">
         <div class="form-group">
             <label for="difficulty">Difficulty</label>
-            <input name="difficulty" type="text" value="{{quest.difficulty}}" placeholder="Quest Difficulty"/>
+            <input name="difficulty" type="text" value="{{quest.difficulty}}" placeholder="Quest Difficulty" id="difficulty"/>
         </div>
         <div class="form-group">
             <label for="status">Status</label>
-            <input name="status" type="text" value="{{quest.status}}" placeholder="Not Started"/>
+            <input name="status" type="text" value="{{quest.status}}" placeholder="Not Started" id="status"/>
         </div>
         <div class="form-group">
             <label for="reward">Reward</label>
-            <input name="reward" type="text" value="{{quest.reward}}" placeholder="Quest Status"/>
+            <input name="reward" type="text" value="{{quest.reward}}" placeholder="Quest Status" id="reward"/>
+        </div>
+        <div class="form-group">
+            <label for="rewardShared">Show Reward Name and Link to Players</label>
+            <input type="checkbox" name="rewardShared" {{checked quest.rewardShared}} id="rewardShared"/>
         </div>
     </div>
     {{editor content=quest.description target="description" button=true editable=editable owner=owner questNumber=questNumber}}

@@ -1,12 +1,14 @@
 Hooks.on('ready', () =>  {
     if (game.settings.get("incarnateWorldBuilding","anvilButtons")){
-        var anvil = document.getElementById("logo")
+        let anvil = document.getElementById("logo")
         if ( game.user.isGM ) {
-            anvil.setAttribute("onclick","IncarnateGamingLLC.openGmScreen ()");
+            anvil.addEventListener('click', IncarnateGamingLLC.openGmScreen);
         }else{
         }
-        anvil.ondragover = ev => IncarnateGamingLLC.Anvil.incarnateOnDragOver(event);
-        anvil.ondrop = ev => IncarnateGamingLLC.Anvil.incarnateOnDrop(event);
+        anvil.addEventListener('dragover', IncarnateGamingLLC.Anvil.incarnateOnDragOver);
+        anvil.addEventListener('drop', IncarnateGamingLLC.Anvil.incarnateOnDrop);
+        // anvil.ondragover = ev => IncarnateGamingLLC.Anvil.incarnateOnDragOver();
+        // anvil.ondrop = ev => IncarnateGamingLLC.Anvil.incarnateOnDrop();
     }
     IncarnateGamingLLC.Calendar.incarnateSetupCalendar();
     IncarnateGamingLLC.StatRoll.incarnateSetupDefaults();

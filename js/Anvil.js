@@ -8,11 +8,10 @@ IncarnateGamingLLC.Anvil = class Anvil{
         return false;
     }
     static incarnateOnDrop(event) {
-        console.log(event,event.dataTransfer.getData('text/plain'));
         event.preventDefault();
         // Try to extract the data
         let data;
-        console.log(IncarnateGamingLLC.Reference.incarnateJSONcheck(event.dataTransfer.getData("text/plain")));
+        console.log('isJSON', IncarnateGamingLLC.Reference.incarnateJSONCheck(event.dataTransfer.getData("text/plain")));
         data = JSON.parse(event.dataTransfer.getData('text/plain'));
         console.log("data",data);
     }

@@ -287,26 +287,26 @@ IncarnateGamingLLC.Reference = class Reference{
         }
         event.dataTransfer.setData("text/plain",JSON.stringify(dragField));
     }
-    static incarnateJSONcheck(input){
-        if (input.match(/^{\"type\":\"Item\",\"id\":\"[a-zA-Z0-9]{16}\"}$/)!==null){
-            return true;
-        }else if (input.match(/^\[?\{\"type\":\"Item\",\"pack\":\"\w+\.\w+",\"id\":\"[a-zA-Z0-9]{16}\"\}(,\{\"type\":\"Item\",\"pack\":\"\w+\.\w+",\"id\":\"[a-zA-Z0-9]{16}\"\})*]?$/)!== null){
-            return true;
-        }else if (input.match(/^\{\"type\":\"Item\",\"actorId\":\"[a-zA-Z0-9]{16}\",\"id\":[0-9]+}$/)!==null){
-            return true;
-        }else if (input.match(/^\{\"type\":\"Item\",\"actorId\":\"[a-zA-Z0-9]{16}\"\"pack\":\"\",\"id\":[0-9]+}$/)!==null){
-            return true;
-        }else if (input.match(/^\[{\"type\":\"Item\",\"actorId\":\"[a-zA-Z0-9]{16}\",\"pack\":\"\",\"id\":[0-9]+}(,{\"type\":\"Item\",\"actorId\":\"[a-zA-Z0-9]{16}\",\"pack\":\"\",\"id\":[0-9]+})*\]$/)!==null){
-            return true;
-        }else if (input.match(/^\[{\"type\":\"Item\",\"actorId\":\"[a-zA-Z0-9]{16}\",\"pack\":\"\w+\.\w+\",\"id\":[0-9]+}(,{\"type\":\"Item\",\"actorId\":\"[a-zA-Z0-9]{16}\",\"pack\":\"\w+\.\w+\",\"id\":[0-9]+})*\]$/)!==null){
-            return true;
-        }else if (input.match(/^{\"type\":\"itemPack\",\"pack\":\"\w+\.\w+\",\"id\":\"[a-zA-Z0-9]{16}\"}$/)!==null){
-            return true;
-        }else if (input.match(/^{\"type\":\"itemPack\",\"pack\":\"\",\"id\":\"[a-zA-Z0-9]{16}\"}$/)!==null){
-            return true;
+    static incarnateJSONCheck(input){
+        let result = false;
+        let fid = new RegExp(/((\"[a-zA-Z0-9]{16}\")|(null))/);
+        let typeName = new RegExp(/\"((Item)|(itemPack)|(Actor)|(JournalEntry)|(Scene))\"/);
+        let packName = new RegExp(/\"([a-zA-Z0-9]+\.[a-zA-Z0-9]+)?\"/);
+        let typePackId = new RegExp('(\"type\":' + typeName.source + `(,\"pack\":${packName.source})?` + ',\"id\":' + fid.source + ')');
+        let typeActorId = new RegExp(`\"actorId\":${fid.source},\"sceneId\":${fid.source},\"tokenId\":${fid.source},\"type\":${typeName.source}`);
+        if(input.match(new RegExp('^\{' + typePackId.source + '\}$'))){
+            result = true;
+        }else if(input.match(new RegExp('^\\[' + typePackId.source + `(,${typePackId.source})*` + '\\]$'))){
+            result = true;
+        }else if(input.match(new RegExp('^\{' + typeActorId.source))){
+            result = true;
+        }else if(input.match(new RegExp('^\\[' + typeActorId.source))){
+            result = true;
         }
-        console.log("Not an item: ",input);
-        return false;
+        if(!result){
+            console.log("Not an item: ",input);
+        }
+        return result;
     }
     static incarnateDelay(ms){
         return new Promise(resolve => setTimeout(resolve, ms));
