@@ -21,9 +21,19 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
     }
     changeSceneConfig(){
         this.addFlags();
+        const buttons = this.oldForm.getElementsByTagName('button');
+        const submitButton = buttons[buttons.length - 1];
+        const dungeonSection = this.getDungeonSection();
+        console.log(dungeonSection);
+        for(let a=[dungeonSection.length -1]; a> -1; a--){
+            console.log(dungeonSection[a]);
+            submitButton.parentElement.insertBefore(dungeonSection[a], submitButton);
+        }
+    }
+    addTabs(){
         this.moveSubmitButton();
         this.moveContent();
-        this.addNewTabs();
+        // this.addNewTabs();
         this.result.prepend(this.tabContent);
         this.result.prepend(this.nav);
         this.oldForm.parentElement.append(this.result);
@@ -40,12 +50,13 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
     }
     static sceneConfigTabCallback(nullElement, tabsV2, newTabName){
     }
-    addNewTabs(){
-        this.tabContent.append(this.getDungeonTab());
-    }
+    // addNewTabs(){
+    //     this.tabContent.append(this.getDungeonTab());
+    // }
     moveSubmitButton(){
-        let buttons = this.oldForm.getElementsByTagName('button');
-        let buttonsLength = buttons.length;
+        const buttons = this.oldForm.getElementsByTagName('button');
+        const buttonsLength = buttons.length;
+        buttons[buttonsLength -1].addEventListener('click', event=>{event.preventDefault();});
         this.result.append(buttons[buttonsLength - 1]);
     }
     moveContent(){
@@ -71,14 +82,13 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
             this.tabContent.append(currentTab);
         }
     }
-    getDungeonTab(){
-        this.nav.append(this.newNav('Dungeons', 'fa-dungeon'));
-        let dungeonTab = this.newTab('Dungeons');
+    getDungeonSection(){
+        let dungeonTab = document.createElement('div');
         dungeonTab.innerHTML = `
 		<div class="form-group">
 			<label>Trace Walls</label>
 			<input type="checkbox" name="flags.dungeon.traceWalls" data-dtype="Boolean"${this.dungeon.traceWalls ? " checked" : ""}/>
-			<p class="notes">Causes room and wallways to be outlined with a black line</p>
+			<p class="notes">Causes room and hallways to be outlined with a black line</p>
 		</div>
 		<div class="form-group">
 			<label>Hall Width</label>
@@ -94,8 +104,12 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
 			<input type="checkbox" name="flags.dungeon.randEnc" data-dtype="Boolean"${this.dungeon.randEnc ? " checked" : ""}/>
 			<p class="notes">Places hidden monsters inside any room that has its description generated.</p>
 		</div>
+        <header class="form-header">
+            <h3 class="form-header"><i class="fas fa-dungeon"></i> Dungeons</h3>
+        </header>
         `
-        return dungeonTab;
+        console.log(dungeonTab.innerHTML);
+        return dungeonTab.children;
     }
     addFlags(){
         if (this.flags === undefined){

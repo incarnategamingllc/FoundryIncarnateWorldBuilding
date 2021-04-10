@@ -10,6 +10,7 @@ IncarnateGamingLLC.Settings = class Settings{
         IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectJournalRevealSecrets());
         IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectJournalQuests());
         IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectRegion());
+        IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectNewSceneOptions());
         IncarnateGamingLLC.Settings.registerSetting(IncarnateGamingLLC.Settings.defaultObjectSceneTabs());
         return true;
     }
@@ -25,17 +26,6 @@ IncarnateGamingLLC.Settings = class Settings{
             type: Boolean
         }
     }
-    // static resetDefault(){
-    //     let object = Settings.defaultObjectAnvil();
-    //     game.settings.set(object.module,object.key,object.default);
-    //     object = Settings.defaultObjectAutoKill();
-    //     game.settings.set(object.module,object.key,object.default);
-    //     object = Settings.defaultObjectRegion();
-    //     game.settings.set(object.module,object.key,object.default);
-    //     object = Settings.defaultObjectSceneTabs();
-    //     game.settings.set(object.module,object.key,object.default);
-    //     return true;
-    // }
     static defaultObjectAnvil(){
         const object = Settings.defaultObject();
         object.name = "Anvil Buttons";
@@ -89,8 +79,15 @@ IncarnateGamingLLC.Settings = class Settings{
     static defaultObjectSceneTabs(){
         const object = Settings.defaultObject();
         object.name = "Scene Tabs";
-        object.hint = "Changes the scene config to a tabbed view and adds a flag tab.";
+        object.hint = "Changes the scene config to a tabbed view";
         object.key = "sceneTabs";
+        return object;
+    }
+    static defaultObjectNewSceneOptions(){
+        const object = Settings.defaultObject();
+        object.name = "Nes Scene Options";
+        object.hint = "Adds new scene options to configure map generation.";
+        object.key = "newSceneOptions";
         return object;
     }
 }
