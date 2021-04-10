@@ -49,5 +49,18 @@ class IncarnateGamingLLC{
         return parent;
     }
 
+    static findParentElementByClass(startElement, className){
+        if(typeof className !== 'string')return false;
+        let found = false;
+        while(startElement && !found){
+            if(startElement.classList.contains(className)){
+                found = true;
+            }else{
+                startElement = startElement.parentElement;
+            }
+        }
+        return startElement ? startElement : false;
+    }
+
     static PLAYER_QUICK_SHEET = '<span class="crossReference" data-fid="g7NQ9CEj2AiLpxXs" data-type="JournalEntry" data-parent="HlyV9728fyQUUdDx" data-pack="world.incarnateRules">Player Quick Sheet</span>';
 }

@@ -3,173 +3,212 @@
   --incBlackPurple: #1F0208;
   --incWhite: #feffe2;
   --trueWhite: #ffffff;
-  --incDeepPurple: #3E044D; 
-  --incLightPurple: #D07EE6; 
+  --incDeepPurple: #3E044D;
+  --incLightPurple: #D07EE6;
   --incMarroonPurple: #4D0435;
 }
+
 /*rich text*/
-.incRollMacro{
-	background:#DDD;
-	border-radius:2px;
-	padding:0 2px;
-	border: 1px solid #BBB;
-	white-space: nowrap;
-	word-break: break-all;
+.incRollMacro {
+  background: #DDD;
+  border-radius: 2px;
+  padding: 0 2px;
+  border: 1px solid #BBB;
+  white-space: nowrap;
+  word-break: break-all;
 }
+
 /*Gms Blind*/
-.incarnate-gms-screen .heading{
-	font-weight:bolder;
-	font-size:18px;
+.incarnate-gms-screen .heading {
+  font-weight: bolder;
+  font-size: 18px;
 }
-.incarnate-gms-screen .heading2{
-	font-size:16px;
-	font-weight:bold;
+.incarnate-gms-screen .heading2 {
+  font-size: 16px;
+  font-weight: bold;
 }
-.incarnate-gms-screen .section:not(:first-child){
-	border-top: 1px solid;
+.incarnate-gms-screen .section:not(:first-child) {
+  border-top: 1px solid;
 }
-.incarnate-gms-screen .section2{
-	border-top: 1px solid gray;
-	padding-top: 3px;
+.incarnate-gms-screen .section2 {
+  border-top: 1px solid gray;
+  padding-top: 3px;
 }
-.incarnate-gms-screen .label{
-	font-size:14px;
+.incarnate-gms-screen .label {
+  font-size: 14px;
 }
-.incarnate-gms-screen .advice{
-	font-size:12px;
-	font-weight:lighter;
+.incarnate-gms-screen .advice {
+  font-size: 12px;
+  font-weight: lighter;
 }
-.incarnate-gms-screen form{
-	overflow:hidden;
+.incarnate-gms-screen form {
+  overflow: hidden;
 }
-.incarnate-gms-screen select, .incarnate-gms-screen button{
-	width:95%;
+.incarnate-gms-screen select, .incarnate-gms-screen button {
+  width: 95%;
 }
-.incarnate-gms-screen .row{
-	display:flex;
-	flex-direction:row;
+.incarnate-gms-screen .row {
+  display: flex;
+  flex-direction: row;
 }
-.incarnate-gms-screen .column{
-	display:flex;
-	flex-direction:column;
+.incarnate-gms-screen .column {
+  display: flex;
+  flex-direction: column;
 }
-.incarnate-gms-screen .tab{
-	margin-right:2px;
+.incarnate-gms-screen .tab {
+  margin-right: 2px;
 }
-.incarnateMapGenerator .tab[data-tab] {
-	display:none;
+.incarnate-gms-screen .incarnateMapGenerator .tab[data-tab] {
+  display: none;
 }
-.incarnateMapGenerator .tab[data-tab].active{
-	display:flex;
-	flex-direction:column;
+.incarnate-gms-screen .incarnateMapGenerator .tab[data-tab].active {
+  display: flex;
+  flex-direction: column;
 }
-.incarnateMapGenerator input[type="number"]{
-	width:4rem;
+.incarnate-gms-screen .incarnateMapGenerator input[type=number] {
+  width: 4rem;
 }
-.incarnateStatSettings input{
-	width:70px;
-	margin-right:10px;
-	margin-bottom:5px;
+.incarnate-gms-screen .incarnateStatSettings input {
+  width: 70px;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
-.incarnateStatSettings input[type="checkbox"]{
-	width:unset;
+.incarnate-gms-screen .incarnateStatSettings input[type=checkbox] {
+  width: unset;
 }
-.incarnate-gms-screen .flex{
-	flex:1;
-	overflow:hidden;
+.incarnate-gms-screen .flex {
+  flex: 1;
+  overflow: hidden;
 }
-.incarnate-gms-screen .flex-right{
-	flex:1;
-	text-align:right;
-	margin-right:5px;
+.incarnate-gms-screen .flex-right {
+  flex: 1;
+  text-align: right;
+  margin-right: 5px;
 }
-.incarnate-gms-screen .flex-auto{
-	flex: 0 0 auto;
+.incarnate-gms-screen .flex-auto {
+  flex: 0 0 auto;
 }
-.incarnate-gms-screen .flex-static{
-	flex: 0 0 100px;
+.incarnate-gms-screen .flex-static {
+  flex: 0 0 100px;
 }
-.incarnate-gms-screen nav{
-	border-bottom:1px solid black;
-	margin-bottom:5px;
+.incarnate-gms-screen nav {
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
 }
-.incarnate-gms-screen nav a{
-	border-top: 1px solid gray;
-	border-radius: 15px;
-	padding-top:4px;
-	padding-bottom:4px;
+.incarnate-gms-screen nav a {
+  border-top: 1px solid gray;
+  border-radius: 15px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
-.incarnate-gms-screen .calendar-buttons{
-	display:flex;
-	flex-wrap: wrap;
-	justify-content: center;
+.incarnate-gms-screen .calendar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.incarnate-gms-screen .incarnateCalendar button{
-	width:110px;
-	margin-bottom:7px;
-	margin-left:0px;
-	margin-right:2px;
+.incarnate-gms-screen .incarnateCalendar button {
+  width: 110px;
+  margin-bottom: 7px;
+  margin-left: 0px;
+  margin-right: 2px;
 }
-.incarnate-gms-screen section.content{
-	overflow-y:auto;
+.incarnate-gms-screen section.content {
+  overflow-y: auto;
 }
-.incarnate-gms-screen .dungeonTabs{
-	display: flex;
+.incarnate-gms-screen .dungeonTabs {
+  display: flex;
 }
-.incarnate-gms-screen .dungeonTabs a{
-	flex: 1;
-	text-align: center;
+.incarnate-gms-screen .dungeonTabs a {
+  flex: 1;
+  text-align: center;
 }
-.incarnateStatSettings .atLeast-create, .incarnateStatSettings .atMost-create{
-	float:right;
+.incarnate-gms-screen .atLeast-create, .incarnate-gms-screen .incarnateStatSettings .atMost-create {
+  float: right;
 }
+
 /*Cross References*/
 .crossReference:hover {
-	color: var(--incBlackPurple);
-	background-color: var(--incLightPurple);
-}body.vtt.game span.crossReference {
-	color: red;
-	text-shadow: 0 0 .5vh var(--incWhite);
-	display: inline;
+  color: var(--incBlackPurple);
+  background-color: var(--incLightPurple);
 }
+
+body.vtt.game span.crossReference {
+  color: red;
+  text-shadow: 0 0 0.5vh var(--incWhite);
+  display: inline;
+}
+
 .populate:hover {
-	color: var(--incBlackPurple);
-	background-color: var(--incLightPurple);
-}body.vtt.game span.populate {
-	color: red;
-	text-shadow: 0 0 .5vh var(--incWhite);
-	display: inline;
+  color: var(--incBlackPurple);
+  background-color: var(--incLightPurple);
 }
+
+body.vtt.game span.populate {
+  color: red;
+  text-shadow: 0 0 0.5vh var(--incWhite);
+  display: inline;
+}
+
 /*Journal Entries*/
-.journal-sheet .editor-content{
-	height: fit-content;
-	min-height: 200px;
+.journal-sheet .editor-content {
+  height: fit-content;
+  min-height: 200px;
 }
-section.secret{
-	background:rgba(226, 18, 18, 0.15);
+
+section.secret {
+  background: rgba(226, 18, 18, 0.15);
 }
-section.secret.learned{
-	background:rgba(110, 190, 114, 0.25);
+
+section.secret.learned {
+  background: rgba(110, 190, 114, 0.25);
 }
+
 /*Quest Pop Up*/
-.quest-editor .editable{
-	display:flex;
-	flex-direction:column;
-    height: 100%;
+.quest-editor .editable {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-.quest-editor .editor{
-	flex:1;
+.quest-editor .editor {
+  flex: 1;
 }
+
 /*Changes to Journal Note Configuration*/
-nav[data-group="noteConfigTabs"] a{
-	border-top:1px solid gray;
-	border-radius:50px;
-	margin-bottom:3px;
-	padding-top:5px;
+nav[data-group=noteConfigTabs] a {
+  border-top: 1px solid gray;
+  border-radius: 50px;
+  margin-bottom: 3px;
+  padding-top: 5px;
 }
-div[data-group="noteConfigTabs"][data-tab].tab.active{
-	display:block;
-	margin-top:3px;
-	border-top:1px solid gray;
-	padding-top:5px;
+
+div[data-group=noteConfigTabs][data-tab].tab.active {
+  display: block;
+  margin-top: 3px;
+  border-top: 1px solid gray;
+  padding-top: 5px;
 }
+
+/*Scene Config*/
+.incarnate-scene-config .scene-config-tab {
+  display: none;
+}
+.incarnate-scene-config .scene-config-tab.active {
+  display: block;
+}
+.incarnate-scene-config nav {
+  display: flex;
+}
+.incarnate-scene-config nav a {
+  flex: 1;
+  border-top: 1px solid gray;
+  border-radius: 15px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  text-align: center;
+}
+.incarnate-scene-config nav a i {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*# sourceMappingURL=incarnateWorldBuilding.css.map */

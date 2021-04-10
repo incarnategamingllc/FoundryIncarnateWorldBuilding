@@ -3,31 +3,32 @@
  * actors as being dead.
  * @type {IncarnateGamingLLC.AutoKill}
  */
-IncarnateGamingLLC.utoKill = class AutoKill{
-    static autoKill(token,data,hp){
-        const actorUpdate = hp !== undefined ? true : false;
-        var id = actorUpdate ? token.data.id : data.id;
-        var combToken = undefined;
-        hp = hp !== undefined ? hp : data.actorData["data.attributes.hp.value"];
+IncarnateGamingLLC.AutoKill = class AutoKill{
+    static autoKill(actor,data,hp){
+        console.log('running', actor, data, hp);
+        let id = data._id;
+        let combToken;
         if (game.combat !== undefined){
-            combToken = game.combat.data.combatants.find(comb => comb.tokenId === id);
+            combToken = game.combat.data.combatants.find(combatant => combatant.token.actorId === id);
         }
-        if ((token.data.overlayEffect === "icons/svg/skull.svg" || actorUpdate) && hp >= 1){
-            data.overlayEffect = "";
-            if (combToken !== undefined){
-                game.combat.updateCombatant({id:combToken.id,defeated:false});
-            }
-            if (actorUpdate === true){
-                token.update(game.scenes.active.data._id,{overlayEffect:""});
-            }
-        }else if (hp === 0){
-            data.overlayEffect = "icons/svg/skull.svg";
-            if (combToken !== undefined){
-                game.combat.updateCombatant({id:combToken.id,defeated:true});
-            }
-            if (actorUpdate === true){
-                token.update(game.scenes.active.data._id,{overlayEffect:"icons/svg/skull.svg"});
-            }
+        console.log(combToken);
+        if(!combToken)return true;
+        const alreadyDead = actor.effects.find(effect => effect.getFlag("core", "statusId") === CONFIG.Combat.defeatedStatusId) ? true : false;
+        hp = hp !== undefined ? hp : data.actorData.data.attributes.hp.value;
+        console.log(hp, alreadyDead);
+        if (hp >= 1 && alreadyDead){
+            IncarnateGamingLLC.AutoKill.toggleDeath(combToken);
+        }else if (hp <= 0 && !alreadyDead){
+            IncarnateGamingLLC.AutoKill.toggleDeath(combToken);
         }
+    }
+    static async toggleDeath(combatant){
+        let isDefeated = !combatant.defeated;
+        await game.combat.updateCombatant({_id: combatant._id, defeated: isDefeated});
+        const token = canvas.tokens.get(combatant.tokenId);
+        if ( !token ) return;
+        let status = CONFIG.statusEffects.find(e => e.id === CONFIG.Combat.defeatedStatusId);
+        let effect = token.actor && status ? status : CONFIG.controlIcons.defeated;
+        await token.toggleEffect(effect, {overlay: true, active: isDefeated});
     }
 }
