@@ -79,8 +79,9 @@ IncarnateGamingLLC.Settings = class Settings{
     static defaultObjectSceneTabs(){
         const object = Settings.defaultObject();
         object.name = "Scene Tabs";
-        object.hint = "Changes the scene config to a tabbed view";
+        object.hint = "CURRENTLY BROKEN. Changes the scene config to a tabbed view";
         object.key = "sceneTabs";
+        object.default = false;
         return object;
     }
     static defaultObjectNewSceneOptions(){

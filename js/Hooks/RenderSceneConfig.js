@@ -1,13 +1,10 @@
 Hooks.on("renderSceneConfig",(app,html,data) => {
-    console.log('renderSceneConfig');
+    let sceneConfig = new IncarnateGamingLLC.SceneConfig(app, html, data);
     if (game.settings.get("incarnateWorldBuilding","newSceneOptions")){
-        let sceneConfig = new IncarnateGamingLLC.SceneConfig(app, html, data);
         sceneConfig.changeSceneConfig();
-        if (game.settings.get("incarnateWorldBuilding","sceneTabs")){
-            sceneConfig.addTabs();
-        }
-        return true;
-    }else{
-        return true;
     }
+    if (game.settings.get("incarnateWorldBuilding","sceneTabs")){
+        sceneConfig.addTabs();
+    }
+    return true;
 });

@@ -18,26 +18,22 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
         this.tabContent = document.createElement('section');
         this.tabContent.classList.add('scene-config-content');
         this.oldForm = this.htmlDom.getElementsByTagName('form')[0];
+        this.addFlags();
     }
     changeSceneConfig(){
-        this.addFlags();
         const buttons = this.oldForm.getElementsByTagName('button');
         const submitButton = buttons[buttons.length - 1];
         const dungeonSection = this.getDungeonSection();
-        console.log(dungeonSection);
         for(let a=[dungeonSection.length -1]; a> -1; a--){
-            console.log(dungeonSection[a]);
             submitButton.parentElement.insertBefore(dungeonSection[a], submitButton);
         }
     }
     addTabs(){
-        this.moveSubmitButton();
+        this.markSubmitButton();
         this.moveContent();
-        // this.addNewTabs();
         this.result.prepend(this.tabContent);
         this.result.prepend(this.nav);
-        this.oldForm.parentElement.append(this.result);
-        this.oldForm.remove();
+        this.oldForm.parentElement.prepend(this.result);
         this.activateEventListeners();
         let sceneConfig = IncarnateGamingLLC.findParentElementByClass(this.result, 'scene-sheet');
         if(sceneConfig){
@@ -50,14 +46,9 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
     }
     static sceneConfigTabCallback(nullElement, tabsV2, newTabName){
     }
-    // addNewTabs(){
-    //     this.tabContent.append(this.getDungeonTab());
-    // }
-    moveSubmitButton(){
+    markSubmitButton(){
         const buttons = this.oldForm.getElementsByTagName('button');
-        const buttonsLength = buttons.length;
-        buttons[buttonsLength -1].addEventListener('click', event=>{event.preventDefault();});
-        this.result.append(buttons[buttonsLength - 1]);
+        buttons[buttons.length -1].classList.add('submit-button');
     }
     moveContent(){
         let children = this.oldForm.children;
@@ -74,7 +65,8 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
                     currentTab.classList.add('active');
                 }
                 this.nav.append(newNavPart);
-            }else if(currentTab){
+                child.remove();
+            }else if(currentTab && !child.classList.contains('submit-button')){
                 currentTab.append(child);
             }
         });
@@ -108,7 +100,6 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
             <h3 class="form-header"><i class="fas fa-dungeon"></i> Dungeons</h3>
         </header>
         `
-        console.log(dungeonTab.innerHTML);
         return dungeonTab.children;
     }
     addFlags(){
@@ -121,65 +112,6 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
         }
         return this.flags;
     }
-    // applyTabListeners(htmlDom){
-    //     //listener to make tabs work
-    //     let nav = $('.tabs[data-group="sceneTabs"]');
-    //     new Tabs(nav, {
-    //         initial: "Appearance",
-    //         callback: t => console.log("Tab ${t} was clicked")
-    //     });
-    //     return htmlDom;
-    // }
-    // createSceneTabs(app,html,data){
-    //     const flags = data.entity.flags;
-    //     const htmlDom = html[0];
-    //     if (htmlDom === undefined) return true;
-    //     let form = htmlDom.getElementsByTagName("form")[0];
-    //     const children = form.children;
-    //     console.log(children);
-    //     var pastHeader = false;
-    //     const newForm = document.createElement("form");
-    //     newForm.setAttribute("autocomplete",form.getAttribute("autocomplete"));
-    //     const tabs = document.createElement("section");
-    //     const nav = document.createElement("nav");
-    //     const buttons = form.getElementsByTagName("button");
-    //     const button = buttons[buttons.length -1];
-    //     const submitButton = button.outerHTML;
-    //     button.remove();
-    //     nav.setAttribute("class","tabs");
-    //     nav.setAttribute("data-group","sceneTabs");
-    //     let currentTab = "";
-    //     Array.from(children).forEach((child)=>{
-    //     // [].forEach.call(children, child =>{
-    //         if (pastHeader === false){
-    //             if (child.tagName === "header"){
-    //                 pastHeader = true;
-    //                 var sanName = IncarnateGamingLLC.Reference.sanitizeName(child.textContent);
-    //                 nav.append(this.newNav(sanName,child.firstChild.outerHTML));
-    //                 currentTab = this.newTab(sanName);
-    //             }else{
-    //                 newForm.appendChild(child);
-    //             }
-    //         }else{
-    //             if (child.tagName === "header"){
-    //                 tabs.append(currentTab);
-    //                 var sanName = IncarnateGamingLLC.Reference.sanitizeName(child.textContent);
-    //                 nav.append(this.newNav(sanName,child.firstChild.outerHTML));
-    //                 currentTab = this.newTab(sanName);
-    //             }else{
-    //                 currentTab.appendChild(child);
-    //             }
-    //         }
-    //     });
-    //     tabs.append(currentTab);
-    //     //form = newForm;
-    //     form.parentElement.prepend(nav);
-    //     form.parentElement.append(newForm);
-    //     form.parentElement.append(tabs);
-    //     form.parentElement.append(IncarnateGamingLLC.createElementFromHTML(submitButton));
-    //     form.remove();
-    //     return htmlDom;
-    // }
     newTab(sanName){
         const currentTab = document.createElement("div");
         currentTab.setAttribute("class","scene-config-tab " + sanName.replace(/[ \r\n]/g,""));
@@ -187,7 +119,6 @@ IncarnateGamingLLC.SceneConfig = class SceneConfig{
         currentTab.setAttribute("data-group","sceneTabs");
         return currentTab;
     }
-    // //logo is in the format <i class="fas fa-image"></i>
     newNav(sanName,logo){
         let newNav = document.createElement("a");
         newNav.setAttribute("class","item");
